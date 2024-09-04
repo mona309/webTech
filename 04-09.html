@@ -31,7 +31,37 @@
         $(document).ready(function(){
             $("p:has(span)").css("color","yellow");
             $("p:contains(with)").css("color","aqua");
+            $('p').click(function () {
+                $(this).css('color', 'green').html('I was clicked');
+                });
+        $('p').mouseover(function() {
+            // $('ul').slideToggle('slow');
+            // $('button').toggle().html('hidden');
+            if ($('button').attr('visible')) {
+                $('button').show().html('hidden');
+            }
+            else {
+                $('button').hide().html('click');
+            }
         })
+        $('li.g1').click(function() {
+            if ($(this).css('opacity') == 1) {
+                $(this).animate({
+                    left: '100px',
+                    opacity: 0.4,
+                    fontSize: '3em'
+                }, 1000);
+            }
+            else {
+                $(this).animate({
+                    left: '0px',
+                    opacity: 1,
+                    fontSize: '1em'
+                }, 1000);
+            }
+        })
+    });
+</script>
     <script>
         function init(){
         c1=document.querySelector("#c1");
@@ -71,6 +101,14 @@
 
     <p class="a2"><span>spanned para</span></p>
     <p class="a2"><span>spanned with para</span></p>
+
+    <p>Games</p>
+    <ul>
+        <li>Call of Duty</li>
+        <li class="g1">Fortnite</li>
+        <li class="g1">PUBG</li>
+    </ul>
+    <button>Click</button>
 
 </body>
 </html>
