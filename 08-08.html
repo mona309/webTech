@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        request line: <method><uri><version>
+            method get put post delete options head trace
+            uri url suffix
+            method http/1.0 http/1.1
+            eg GET /test.html HTTP/1.1
+        blank line crlf - carriage return line feed
+        3 difgit number first specifies status 
+            1 informational 
+            2 success 
+            3 redirection 
+            4 client error 
+            5 server error
+        status msg 
+            200 Ok handled w/o error 
+            403 Frobidden client lack permission to access file 
+            404 not founf server couldnt find file
+        response line version code msg
+        eg http/1.1 200 ok
+        MIME - multipurpose internet mail extension
+        HTTPS - hypertext transfer protocol secure
+        ssl certificate - secure socket layer - issued by a trusted 3rd party CA-certificate authority
+        MITM - man in the middle attack
+        http special characters
+            & &amp;
+            < &lt;
+            > &gt;
+            " &quot;
+            ' &apos;
+            32  &nbsp;
+        w3c www consortium approves everything- has online editor
+        <hr/> draws line acrosee display after line break
+        GIf - graphic intechaneg format
+        jpeg - joint photography experts group
+        png portable network graphics
+        <img src"name.jpg" alt="image view"/> img has 30 attributes
+        Links <a> anchor tag
+            content of a is visual link in doc
+            <a href="menu.html">menu</a>
+        <form list_of_attributes_and_values>
+            <input element>
+            ...
+        </form>
+        Important attributes of the <form> tag
+        • Method
+        • Action
+        • Target
+        Example:
+        <form method=“post” action=“survey.php” target=“_blank”>
+        <input type=“text”>
+        ...
+        </form>
+
+        widgets:
+            text - single line
+            textarea
+            button
+            checboxes
+            radiobuttions
+            hidden
+            dropdown list
+
+        input type="text/radio/checkbox/submit/button"
+
+        html5 new inputs
+        email/number spinbox/range/url/color/search/date/time/file
+        new properties
+        placeholder/required/pattern/autofocus
+
+
+    -->
+    <pre>
+
+        new doc
+
+    </pre>
+    <form action="">
+        <input type="text" name="phone" size="12">
+        <p>
+            <input type="checkbox" name="yesno" id="yes" value="yes"><label for ="yes">yes</label>
+            <input type="checkbox" name="yesno" id="no" value="no" checked="checked"><label for ="no">no</label>
+        </p>
+        <p>
+            <input type="radio" name="yesnoo" value="1">
+            <br/>
+            <input type="radio" name="yesnoo" value="2">
+            <br/>
+            <input type="radio" name="yesnoo" value="3">
+            <br/>
+        </p>
+    </form>
+
+</body>
+</html>

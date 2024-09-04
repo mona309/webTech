@@ -1,0 +1,23 @@
+O   O   O   O   O   O   O   O   O   O|
+-------------------------------------|
+O   O   O   O   O   O   O   O   O   O|
+-------------------------------------|
+O   O   O   O   O   O   O   O   O   O|
+-------------------------------------|
+O   O   O   O   O   O   O   O   O   O|
+-------------------------------------|
+O   O   O   O   O   O   O   O   O   O|
+-------------------------------------|
+O   O   O   O   O   O   O   O   O   O|
+-------------------------------------|
+
+0
+H
+
+-> main fellow puts in say 50 strips and types in the machine 50 are there;
+-> auto close and doesnt open for humans
+-> tray that moves near all boxes and when that med is required the box removes 1 strip at a time and ejects on tray machine
+-> sliding tray machine will bng all meds to front
+
+idea - S grade
+execution - "not yet"

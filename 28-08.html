@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //pure object is reference data type
+        var obj1= new Object();
+        var obj2=obj1;
+        var o={
+            "firstname":"a",
+            lastname:"b",
+            "func":function(){ alert("hello"+this.firstname+this.lastname);}
+        }
+        o.func();
+
+        let item1 = { 
+            iname : "Reebok", 
+            iprice : "Rs 2000", 
+            show : function(){ 
+            document.write("iname: "+this.iname+" iprice: "+this.iprice+"<br/>"); 
+            } 
+        }; 
+        
+        let item2 = Object.create(item1); // item2 will be replica of item1 
+        
+        let item3 = Object.create(item1, { 
+            iname:{value:"PS5"}, 
+            iprice:{value:"Rs 40000"}, 
+            idesc:{value:"UHD 1080p"} 
+            }
+        ); 
+        
+        item3.show(); 
+        function item(name, price){ 
+        this.iname = name; 
+        this.iprice = price; 
+        } 
+        
+        item.prototype.show = function(){ 
+        document.write("iname: "+this.iname+" iprice: "+this.iprice+"<br/>"); 
+        } 
+        
+        function game_cons(name, price, desc){ 
+        item.call(this, name, price); 
+        this.desc = desc; 
+        } 
+        //item.show.call(xyz) 
+        game_cons.prototype = new item(); 
+        game_cons.prototype.constructor = game_cons; 
+        let gc1 = new game_cons("PS5", "Rs 40000", "UHD 1080p"); 
+        
+        var student=new Person("John",3,"E");
+        
+    </script>
+</head>
+<body>
+    <!--
+
+    -->
+</body>
+</html>

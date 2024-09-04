@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function init(){
+            p1=document.querySelector("p");
+            p1.style.color="blue";
+            list=document.querySelectorAll("li.g1"); //getElemntByCLassNAme
+            for(i=0;i<list.length;i++)
+                list[i].innerText=list[i].innerText.toUpperCase();
+        
+                newele=document.createElement("li");
+                newele.innerText="AFLL";
+                ull=document.querySelector("ul");
+                ull.appendChild(newele);
+                ull.insertBefore(newele,list[0]);
+        }
+        
+    </script>
+</head>
+<body onload="init()">
+    <p>subjects</p>
+    <ul>
+        <li>web tech</li>
+        <li class="g1">unit 1</li>
+        <li class="g1">unit 2</li>
+    </ul>
+    <p>event handling</p>
+    <button id="ch1">click here1</button>
+
+    <button id="ch2">click here2</button>
+
+    <button id="ch3">click here3</button>
+    <form name="geeral">
+        Keyboard: <input type="text" id="fe"><br>
+
+        enter name: <input type="text" id="fhe"><br>
+    </form>
+</body>
+</html>

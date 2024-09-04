@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <p id="a1">subst</p>
+    <script>
+        function display(){
+            var a=10;
+            document.write("<br>local variable",a);
+        }   
+        var a;
+        document.write(typeof(a)); //undefined
+        var a=true;
+        document.write(typeof(a)); //boolean
+        var a=20;
+        document.write("<br>global variable",a);
+        display();
+        document.write("<br>global variable",a);
+        x=30;   //default var
+        document.write("<br>",x);
+        //let x=50; the machine 50 are there;
+        //document.write("<br>",x);   //syntax error cuz let doesnt allow redeclaration
+        let y=50;
+        document.write("<br>",y);
+        var aa=30;
+        var bb=10;
+        linebreak="<br>"
+        document.write("<br>",(aa>bb)?aa:bb);
+        document.write(linebreak);
+        document.write("aa%bb=");
+        res=aa%bb;
+        document.write(res);
+        document.write(linebreak);
+        //aa=aa++;
+        document.write("<br>",aa++);
+        //aa=++aa;
+        document.write("<br>",++aa);
+        //aa=aa--;
+        document.write("<br>",aa--);
+        //aa=--aa;
+        document.write("<br>",--aa);
+        document.write(linebreak);
+        document.write(16+4+"Volov"+15+14);
+        document.write(linebreak);
+        document.write("F"+"section");
+        document.write(linebreak);
+        document.write("F"+" "+"section");
+        document.write(linebreak);
+        document.write(("Volvo"+16)+24);
+        document.write(linebreak);
+        document.write(10+12+"a"+1+(("Volvo"+16)+24));
+        document.write(linebreak);
+        const cars=["volvo","skoda","mercedes","maruthi suzuki","hyundai","scorpio","jaguar"];
+        let text="";
+        for(let i=0;i<cars.length;i++){
+            document.write(linebreak,cars[i]);
+            //text+=cars[i];
+            //text+=linebreak;
+        }
+        let myele=document.getElementById("a1");
+        myele.style.color = "red";
+        document.getElementById("a1").innerHTML+="hello";
+        console.log(1==1);
+        console.log("1"==1);
+        console.log("1"===1);
+        console.log("hello"==="hello");
+        //only declaration are hoisted not inirialuxetion
+        xx=5;
+        document.write(linebreak,xx,linebreak);
+        var xx;
+        var xxx;
+        xxx=5;
+        document.write(xxx,linebreak);
+        //both work
+        document.write(xxxx,linebreak);
+        var xxxx;
+        xxxx=5;
+        //doesn't work; - undefined
+        //document.write(xxxxx,linebreak);
+        //xxxxx=100;
+        //22-08.html:83 Uncaught ReferenceError: xxxxx is not defined at 22-08.html:83:24
+        var hello=function disp(){return "hello";}
+        document.write(hello());
+        fun1=()=>"<br>hello arrow fucntion";
+        document.write(fun1());
+        function add(ab,ba){return ab+ba;}
+        var xadd=add(2,5);
+        document.write(linebreak,xadd);
+        //var ref =add;
+        //console.log(ref(5,8));
+        var ref=function (aaa,bbb){return aaa+bbb;}
+        console.log(ref(5,5));
+        console.log(ref(5,6,7,8));
+        console.log(ref(5));
+        console.log(ref("1","1"));
+        console.log(ref("nand","mon"));
+
+        var ref1=function (aaa,bbb){return aaa-bbb;}
+        console.log(ref1(5,5));
+        console.log(ref1(5,6,7,8));
+        console.log(ref1(5));
+        console.log(ref1("1","1"));
+        console.log(ref1("nand","and"));
+
+        var ref2=function (aaa,bbb){
+            var s=0;
+            for(var i in arguments) s+=arguments[i];
+            return s;
+        }
+        console.log(ref2(5,5));
+        console.log(ref2(5,6,7,8));
+        console.log(ref2(5));
+        console.log(ref2("1","1"));
+        console.log(ref2("nand","mon"));
+
+        var ref3=function (){
+            var s=0;
+            for(var i in arguments) s+=arguments[i];
+            return s;
+        }
+        console.log(ref3(5,5));
+        console.log(ref3(5,6,7,8));
+        console.log(ref3(5));
+        console.log(ref3("1","1"));
+        console.log(ref3("nand","mon"));
+    </script>
+
+
+</body>
+</html>

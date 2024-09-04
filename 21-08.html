@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{background-color: bisque;}
+        #a2:active{color:blue;}
+        #a2:link{color:red;}
+        #a1:visited{color:pink;}
+        #a1:hover{color: black;}
+        p{background-color: rgb(208, 247, 248);}
+        p::first-line{text-decoration: underline;}
+        p::first-letter{color: red;}
+        p.noline{background-color: rgb(198, 236, 173);font-size: 30px;}
+        p.noline::first-line{text-decoration: none;font-size:200%}
+        p.noline::first-letter{color: blue;}
+        h1::before{content:url(Untitled.jpeg)}
+        a{font-family: 'Times New Roman', Times, serif;}
+        h1::after{content:url(Untitled.jpeg)}
+        h1{font: Italic bold 30px Arial,sans-serif;}
+        p em{color: rgb(59, 209, 54);font-variant: small-caps;font-style: normal;font-size: large;border:none;}
+        em#stat{position: static;text-decoration: overline;border:3px solid #73AB21}
+        em#aaa{position: relative;left: 30%;border:3px solid #73AB21}
+        em#fix{position:fixed;bottom:10px;right:10px;width:150px;border:3px solid #73AB21;background-color: black;color: white;}
+        em#stick{position:sticky;top:10px;right:10px;width:150px;border:3px solid #73AB21;background-color: black;color: white;}
+        em#abs{position:absolute;top:100px;right:100px;width:150px;border:3px solid #73AB21;background-color: black;color: white;}
+        #abs{position:absolute;top:10px;right:10px;width:150px;border:3px solid #73AB21}
+        #first{position: relative;top:50px;left: 30%;background-color: yellow;}
+
+#box{padding: 5px 20px 5px 20px;border:2px dashed black;margin: 60px 40px 20px 0px;background-color: blanchedalmond;font-size: 200%;}
+
+    </style>
+    <script type="text/javascript" src="21-08.js">
+
+        document.write("written with in-file js script")
+        console.log("this is console output")
+    </script>
+</head>
+<body onload=show()>
+    <br><h1>21-08-2024</h1><br>
+
+<a id="a1" href="https://www.google.com">This is a link</a>
+<a id="a2" href="#">This is a link</a>
+<p class="noline">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis at facilis libero corrupti doloribus aliquid, explicabo distinctio ad vero architecto dignissimos praesentium nam provident natus recusandae numquam possimus voluptas qui.</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<em> Praesentium s</em>aepe aut quos minus assumenda? Libero rerum autem tempore veniam eos, voluptatem vitae eaque cumque laudantium, beatae debitis, totam asperiores provident?</p>
+<p class="noline">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis at facilis libero corrupti doloribus aliquid, explicabo distinctio ad vero architecto dignissimos praesentium nam provident natus recusandae numquam possimus voluptas qui.</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<em> Praesentium s</em>aepe aut quos minus assumenda? Libero rerum autem tempore veniam eos, voluptatem vitae eaque cumque laudantium, beatae debitis, totam asperiores provident?</p>
+<p class="noline">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis at facilis libero corrupti doloribus aliquid, explicabo distinctio ad vero architecto dignissimos praesentium nam provident natus recusandae numquam possimus voluptas qui.</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<em> Praesentium s</em>aepe aut quos minus assumenda? Libero rerum autem tempore veniam eos, voluptatem vitae eaque cumque laudantium, beatae debitis, totam asperiores provident?</p>
+<em id="stick">sticky item</em>
+<p class="noline">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis at facilis libero corrupti doloribus aliquid, explicabo distinctio ad vero architecto dignissimos praesentium nam provident natus recusandae numquam possimus voluptas qui.</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<em> Praesentium s</em>aepe aut quos minus assumenda? Libero rerum autem tempore veniam eos, voluptatem vitae eaque cumque laudantium, beatae debitis, totam asperiores provident?</p>
+<p class="noline">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis at facilis libero corrupti doloribus aliquid, explicabo distinctio ad vero architecto dignissimos praesentium nam provident natus recusandae numquam possimus voluptas qui.</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<em> Praesentium s</em>aepe aut quos minus assumenda? Libero rerum autem tempore veniam eos, voluptatem vitae eaque cumque laudantium, beatae debitis, totam asperiores provident?</p>
+<p class="noline">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis at facilis libero corrupti doloribus aliquid, explicabo distinctio ad vero architecto dignissimos praesentium nam provident natus recusandae numquam possimus voluptas qui.</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<em> Praesentium s</em>aepe aut quos minus assumenda? Libero rerum autem tempore veniam eos, voluptatem vitae eaque cumque laudantium, beatae debitis, totam asperiores provident?</p>
+
+<em id="stat">static item</em>
+<em id="aaa">relative item</em>
+<br>
+<em id="aaa">relative item</em>
+<div>without relative</div>
+<p>first item</p>
+<p>second item</p>
+<div>with relative</div>
+<p id="first">first item</p>
+<p>second item</p>
+<em id="fix">fixed item</em>
+
+<em id="abs">absoluyte item</em>
+<div>
+    <div id="abs">absoluyte item</div>
+</div>
+<p id="box">this is a box model</p>
+<!--
+style type:
+-inline
+-external
+-
+
+//colour #RRGGBB rgb(%r,%g,%b)
+//font family so supported by all browsers
+//font sizes values xxlarge xlarge large medium small xmall xxsmall
+//font varient 
+//p em{font-varient:small-caps;}    ->  contextual/decsendent slectors em for emphasising
+//(normal/italic/oblique)
+// fontstyle fontvarient fontweight fontsize fontfamily
+//text-indent (pt/%/em)
+//list style type  none/disc/circle/square............
+
+selector.class:pseudo-class{
+    proprty:value;}
+selector:pseudo-class{
+    proprty:value;
+    a:link-normal unvisited link
+    a:visited visted link
+    a:hover hover mouse
+    a:active the moment it is clicked
+    }
+
+    //position value - static absolute relative sticky fixed
+    //safari -webkit-sticky instead of sticky
+    //box model paading and margin top right bottom left
+    //body{
+        background-image:url("6.png");
+        background-repeat:no-repeat(default)/repeat/repeat-x/repeat-y;
+    }
+-->
+</body>
+</html>

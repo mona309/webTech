@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+/*
+
+static class cannot be instantiated-cannot make object of it
+
+global objects -
+-math - math built-in functions
+-number -
+        MAX_VALUE
+        MIN_VALUE
+        NaN
+        POSITIVE_INFinity
+        NEGTAVE_INFIVITY
+        use isNaN(a) to test is a is NaN
+-string - string manipulation methods
+-array - 
+        let arr = new Array(100) - creates array of 100 elements
+        - if empty dynamic undefined object
+        let arr = new Array(10,20) - creates 2 ele
+        var l =[1,"ii","4"]; - lieral arrays cuz a variable has no specific type
+        var a=[1,2];
+        console.log(a);     >>[1,2]
+        a.length=7 ->length property
+        console.log(a);     >>[1,2,<5 empty items>]
+        array elme can be objects - functions objects arrays inside arrays
+        a[0]=Date.now; a[1]=myFunction; a[2]=myCars;
+        array methods - 
+            push
+            pop 
+            shift 
+            unshift 
+            join 
+            indexOf 
+            sort 
+            concat 
+            slice
+            splice
+        
+-date
+-window
+-document
+*/
+function myfun(){
+    console.log("inside myfun");
+}
+
+var a=[100,"abc",[1,2],myfun()];
+console.log(a);
+/*
+math and number static class
+
+
+inside myfun
+Array(4)
+0: 100
+1: "abc"
+2: (2) [1, 2]
+3: undefined
+length: 4
+[[Prototype]]: Array(0)
+
+inside myfun
+(4) [100, 'abc', Array(2), undefined]
+*/
+var b=new Array();
+b[0]=Date.now();
+b[1]=myfun();
+b[2]="abc";
+console.log(b);
+var c=["abc","bcd","cde"]
+console.log(c.concat(c[2])); //b[]+""
+c.pop();
+console.log(c);
+c.push("dff");
+console.log(c);
+c.shift();
+console.log(c);
+c.unshift("aaa","aaaaa");
+console.log(c);
+
+var d=[0,1,2,3,4,5,6,7,8,9];
+console.log(d.slice(1,4));
+console.log(d);
+
+
+var d=[0,1,2,3,4,5,6,7,8,9];
+console.log(d.splice(2,4,44)); //from 2nd index remove 4 elements and replace with 44;
+console.log(d);
+var d=[0,1,2,3,4,5,6,7,8,9];
+console.log(d.splice(2,0,44)); //from 2nd index remove 0 elements and insert 44;
+console.log(d);
+
+var d=["0","1","2","3","4","5","6","7"];
+console.log(d.splice(2,4,"44"));
+console.log(d);
+
+var d=[12,42,2,[2,6,2],44,6,9];
+console.log(d);
+console.log(d.sort());      //only sorts 1st digit
+console.log(d);
+console.log(d.sort((a,b)=>a-b));
+
+console.log(d.sort((a,b)=>b-a));
+
+console.log(d.sort());
+
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+
+// Sort the Array
+fruits.sort();
+
+// Reverse the array
+fruits.reverse();
+
+const points = [40, 100, 1, 5, 25, 10];
+
+// Sort the Array
+console.log(points.sort(function(a, b){return a-b}));//asc
+console.log(points.sort(function(a, b){return b-a}));//desc
+console.log(points.sort(function(a, b){return a-b}));
+let lowest = points[0];
+console.log(lowest);
+console.log(points.sort(function(a, b){return b-a}));
+var highest = points[0];
+console.log(highest);
+console.log(points.sort(function(a, b){return a-b}));
+var highest = points[points.length-1];
+console.log(highest);
+function sanitize(x){
+    if (isNaN(x)) return NaN;
+    return x;
+}
+console.log(sanitize("1"));
+
+console.log(sanitize("notanymber"));
+
+console.log(sanitize(1));
+
+console.log(sanitize(NaN));
+
+console.log(sanitize("NaN"));
+
+var now=new Date();
+
+console.log(Math.E);
+console.log(Math.PI);
+
+console.log(Math.SQRT2); 
+console.log(Math.SQRT1_2); 
+console.log(Math.sqrt(144.00)); 
+console.log(Math.log(314)); 
+console.log(Math.sin(0));
+console.log(Math.cos(0));
+
+console.log(Math.ceil(1.359));
+console.log(Math.floor(1.359));
+console.log(Math.ceil(-1.359));
+console.log(Math.floor(-1.359));
+console.log(Math.abs(-1.359));
+
+count=0;
+function log(){
+    console.log(count);
+    count++;
+    if (count==4) clearInterval(t); 
+}
+setTimeout(log,3000);//de;ay utput for 3 sec
+var t=setInterval(log,2000); //repeat every 2 sec
+   //not stopping;
+//after 3 sec 0 print tafter 2 sec 1 print after 2 sec 2 print
+
+
+</script>
+    <style>
+        
+    </style>
+    
+</body>
+</html>
