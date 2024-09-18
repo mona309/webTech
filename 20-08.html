@@ -10,6 +10,17 @@
                 padding: 20px;
                 text-align: center;
             }
+            #myDiv1, #myDiv2 {
+            background-color: coral;
+            padding: 50px;
+            }
+
+            #myP1, #myP2 {
+            background-color: white; 
+            font-size: 20px;
+            border: 1px solid;
+            padding: 20px;
+            }
         </style>
         <script>
             function init(){
@@ -440,5 +451,74 @@ document.getElementById("de").innerHTML =
                 alert(this.getAttribute("id") + " click event handled ");
         }
     </script>
+    <h2>JavaScript addEventListener()</h2>
+
+    <div id="myDiv1">
+      <h2>Bubbling:</h2>
+      <p id="myP1">Click me!</p>
+    </div><br>
+    
+    <div id="myDiv2">
+      <h2>Capturing:</h2>
+      <p id="myP2">Click me!</p>
+    </div>
+    
+    <script>
+            document.getElementById("myP1").addEventListener("click", function() {
+              alert("You clicked the white element!");
+              console.log(event.eventPhase+" "+event.target.id + " " + event.currentTarget.id);
+              //event.stopPropagation();
+            }, false);
+    
+            document.getElementById("myDiv1").addEventListener("click", function() {
+              alert("You clicked the orange element!");
+              console.log(event.eventPhase+" "+event.target.id + " " + event.currentTarget.id);
+            }, false);
+    
+            document.getElementById("myP2").addEventListener("click", function() {
+                
+              alert("You clicked the white element!");
+              console.log(event.eventPhase+" "+event.target.id + " " + event.currentTarget.id);
+            }, true);
+    
+            document.getElementById("myDiv2").addEventListener("click", function() {
+             
+              alert("You clicked the orange element!");
+              console.log(event.eventPhase+" "+event.target.id + " " + event.currentTarget.id);
+             // event.stopPropagation();
+            }, true);
+    </script>
+    <form>
+        <div>
+          <label for="fname">First name: </label>
+          <input id="fname" type="text">
+        </div>
+        <div>
+          <label for="lname">Last name: </label>
+          <input id="lname" type="text">
+        </div>
+        <div>
+          <input id="submit" type="submit">
+
+          <input id="reset" disabled type="reset">
+        </div>
+      </form>
+      <p id="pp"></p>
+      <script>
+        const form = document.querySelector('form');
+        const fname = document.getElementById('fname');
+        const lname = document.getElementById('lname');
+        const para = document.querySelector('p#pp');
+  
+        form.onsubmit = function(e) {
+            console.log(form.value,fname.value,lname.value,para.value);
+          if(fname.value === '' || lname.value === '') {
+            e.preventDefault();       //without will submit and refresh
+            para.textContent = 'You need to fill in both names!'
+            alert("you need to fill both names");
+          }
+        }
+  
+      </script>
 	</body>
 </html>
