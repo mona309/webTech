@@ -2,6 +2,15 @@
 <html lang="en">
 	<head>
 		<title>My first HTML document</title>
+        <style type="text/css">
+            .divStyle
+            {
+                display: table-cell;
+                border: 5px solid black;
+                padding: 20px;
+                text-align: center;
+            }
+        </style>
         <script>
             function init(){
                 p1=document.querySelector("p");
@@ -24,7 +33,28 @@
                 //ul1.replaceChild(newsub, ul1.children[2]);
                 list[0].parentNode.replaceChild(newsub, ul1.children[2]);
                 }
-            
+            /* Event Handler Registration
+		inline: <p onclick="handle()"</p>
+		event Property: p1.onclick=handle
+		event Listener: p1.addEventListener("click", handle,true);
+		*/
+		function init(){
+			list=document.querySelectorAll("li");
+			for(let i in list)
+			list[i].onclick=handler;
+			document.querySelector("p#click").addEventListener("click", 
+			 function(event){
+			event.target.innerHTML= "I was clicked";
+				});
+			
+		}
+		
+		function handler(event){
+			ev=event;
+			console.log(event.target.innerHTML);
+			event.target.style.color="blue";
+			//event.preventDefault();
+		}
             </script>
 	</head>
 	<body onload="init()">
@@ -378,6 +408,14 @@ document.getElementById("de").innerHTML =
             <li class="g1"> Web Technologies</li>
             <li class="g1"> Data Science</li>
     </ul>
-
+    <div>
+		<p onclick= "handler(event)"> Subjects</p>
+        <p id="click">click here</p>
+		<ul>
+				<li> Data Structures </li>
+				<li> Web Technologies</li>
+				<li> Data Science</li>
+		</ul>
+	  </div>
 	</body>
 </html>
