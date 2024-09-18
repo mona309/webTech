@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script>
+        function settext(){
+            let col = document.querySelector("#colcode").value;
+            document.querySelector("#coltext").value = col;
+        }
+        function setcolor(){
+            let col = document.querySelector("#coltext").value;
+            document.querySelector("#colcode").value = col;
+        }
+    </script>
+
+    
 </head>
 <body>
     <!--
@@ -98,6 +110,103 @@
             <br/>
         </p>
     </form>
-
+    <h2> Student Survey</h2>
+    <form method="get" action="save.php" target=_blank">
+        FName: <input type="text" name="Fname" />
+        LName: <input type="text" name="Lname" />
+        <br/>Email:<input type="text" name="uemail"/>
+        <br/>Address: <textarea name="uadd" rows="3" cols="20"></textarea><br/>
+        <br/>Your Hobby: <input type="checkbox" name="uff" value="Sports" checked/>Sports
+        <input type="checkbox" name="uff" value="Music"/>"Music"
+        <input type="checkbox" name="uff" value="Travel" />Travel
+        <input type="checkbox" name="uff" value="Reading" />Reading
+        <br/>Gender: 
+        <input type="radio" name="Gender" value="F" /> Female
+        <input type="radio" name="Gender" value="M" /> Male
+        <input type="radio" name="Gender" value="NA" /> Other
+        <br/> Technical Skills
+        <select name="ucon" >
+        <option selected value="React">HTML</option>
+        <option value="Express">CSS</option>
+        <option selected value="React">React Js</option>
+        <option value="Node">Node Js</option>
+        <option value="Express">Express Js</option>
+        </select>
+        <br/><input type="button" value="Click Me"/>
+        <input type="submit" value="Submit Survey"/>
+        <button type="reset">Clear Form</button>
+        
+        
+    </form>
+    <h2>Pizza Delivery Feedback</h2>
+    <form action="mailto:info@w3docs.com?subject=The%20subject%20of%20the%20mail" method="post" enctype="text/plain">
+      <div>
+        <label for="uname">Name:
+          <input type="text" name="name" id="uname" />
+        </label>
+      </div>
+      
+      <div>
+        <label for="uemail">mail:
+          <input type="text" name="email" id="uemail" />
+        </label>
+      </div>
+      <div> <label for="Rating">Rate Us:</label>
+        
+        <input type="radio" name="uname" value="10" /> Extraordinary
+				<input type="radio" name="uname" value="5" /> Good
+				<input type="radio" name="uname" value="3" /> Poor
+      
+      </div>
+				
+      <div>
+        <label for="ucomments">Comments:</label>
+        <br />
+        <textarea name="comments" id="ucomments" rows="12" cols="35">Send your comments to us.</textarea>
+      </div>
+      <div>
+        <input type="submit" value="Send" />
+        <input type="reset" value="Clear Form" />
+      </div>
+    </form>
+    <fieldset>
+        <form action="/page.php">
+        <legend> Students Details</legend>
+        First Name: <input type="text" name="fname"> <br> <br>
+        Last Name: <input type="text" name="lname" value="Berners-Lee"> <br> <br>
+        Department
+        <input type="radio" name="branch" value="CSE"> CSE
+        <input type="radio" name="branch" value="ECE"> ECE
+        <input type="radio" name="branch" value="Mech"> MECH <br><br>
+        Semester:
+        <input type="checkbox" name="sem" value="III"> 3rd Semester
+        <input type="checkbox" name="sem" value="V"> 5th Semester
+        <input type="checkbox" name="sem" value="7th"> 7th Semester
+        <br><br>
+        Select Number:
+        <input type="number" name="phno" min="1" max="10"> <br> <br>
+        Birthday:
+        <input type="date" name="birthday"> <br><br>
+        Favorite Color:
+        <input type="color" name="Fcolor"><br><br>
+        Sports Interest(0-10):
+        <input type="range" name="vol" min="0" max="10"> <br> <br>
+        Email:
+        <input type="email" name="mail"> <br> <br>
+        
+    </fieldset>0
+        Time:
+        <input type="time" name="tt"> <br> <br>
+        Tel:
+        <input type="tel" name="phone" placeholder="10 digits" pattern="[0-9]{10}" required> <br> <br>
+        <input type="submit" Value="Submit"> <br> <br>
+        <input type="reset" value="Reset"> <br> <br>
+        </form>
+        <form action="mailto:nandanamathew2@gmail.com" method="post">
+            <input id="colcode" onchange="settext()" type="color" name="ucolor"></input>
+            <input onchange="setcolor()" type="text" id="coltext"></input>
+            <input type="tel" autofocus required placeholder="xxx-xxx-xxxx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="utel"></input>
+            <button type="submit">Submit</button>
+        </form>
 </body>
 </html>

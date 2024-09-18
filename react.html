@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>REACT</title>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id ="container"></div>
+    <script type="text/babel">
+      class Sample extends React.Component{
+			render(){
+				return (<div>
+          
+        <p><h2>{this.props.avengers}</h2>:<p>{this.props.children}</p></p>
+      </div>)
+			}
+		  }
+  
+	  const root=ReactDOM.createRoot(document.querySelector("#container"));
+    root.render(
+      <div>
+      <Sample>hi ironman good morning class</Sample>
+
+      <Sample avengers="spiderman">hi ironman good morning sir</Sample>
+      <Sample avengers="captain">LANGUAGE PLEASE</Sample>
+      
+      </div>
+    );
+    
+
+    
+  
+        </script>
+</body>
+</html>
+<!--
+        class Buttonify extends React.Component{
+            render()
+            {
+                return <button type="{this.props.behaviour}">{this.props.children}</button>
+            }
+        }
+        const root = ReactDOM.createRoot(document.querySelector("#contain"));
+        root.render(<div>
+        <Buttonify behaviour="submit">SUBMIT </Buttonify>
+        <Buttonify behaviour="reset">RESET </Buttonify>
+        </div>);
+
+-->
