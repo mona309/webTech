@@ -30,7 +30,19 @@
         #first{position: relative;top:50px;left: 30%;background-color: yellow;}
 
 #box{padding: 5px 20px 5px 20px;border:2px dashed black;margin: 60px 40px 20px 0px;background-color: blanchedalmond;font-size: 200%;}
-
+h2 { 
+			border:5px solid black;
+			}
+		h3 {
+		    border-left:5px solid black;
+			border-right:5px solid black;
+			border-top: 10px dotted blue;
+			border-bottom: 7px dotted blue;
+			margin-left: 25px;
+			padding-top: 25px;
+			position:sticky;
+			top:1px
+			}
     </style>
     <script type="text/javascript" src="21-08.js">
 
@@ -38,7 +50,42 @@
         console.log("this is console output")
     </script>
 </head>
-<body onload=show()>
+<body style= "background:powderblue" onload=show() >
+    <!-- Paragraphs -->
+    <p style="color:tomato;">  This is my first <em>paragraph </em>contents.<br/>
+     This is the second line.
+     
+    </p>
+    
+    <!-- Headings -->
+    <h1 style="background:blue;"> H1 heading </h1>
+    <h2 style="background-color:red;"> H2 heading </h2>
+    <h3> H3 heading </h2>
+    <h4> H4 Heading </h4>
+    <h5> H5 Heading </h5>
+    <h6> H6 Heading </h6>
+    x<sub>2</sub><sup> 3</sup>
+    
+    <!-- Lists -->
+    
+    <!-- Unordered List, Ordered List and Definition List -->
+    <ul>
+        <li> Rome </li>
+        <li class="city"> Paris </li>
+    </ul>	
+    <ol class="ol1">
+        <li> Bangalore </li>
+        <li id="id1"> Chennai  </li>
+        <li class="city"> Mumbai </li>
+    </ol>
+    <dl> 
+        <dt> Web technologies </dt>
+        <dd> This is the course with interesting topics like NodeJS and ReactJS </dd>
+        <dt> Data Science </dt>
+        <dd> This course gives a introduction to data science </dd>
+    </dl>
+    
+     <a href="08-08.html"> click here to change color</a>
     <br><h1>21-08-2024</h1><br>
 
 <a id="a1" href="https://www.google.com">This is a link</a>
