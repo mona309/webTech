@@ -323,6 +323,114 @@ v1.setAttribute('height', '10%');
 		
 		
 	   </script>
+       <script>
+        function loaddata4(){
+            let xhr=new XMLHttpRequest();
+            xhr.open("get","sample.xml",true);
+            xhr.onreadystatechange=showdata4;
+            xhr.responseType="document";
+            xhr.send();
+        }
+        function showdata4(){
+            console.log("In Showdata");
+            if(this.readyState==4&&this.status==200){
+                console.log("Inside if");
+                document.querySelector("#container4").innerHTML=this.response.getElementsByTagName("srn")[0].firstChild.nodeValue;
+
+            }
+        }
+    </script>
+    <script>
+        function fetchdata(){
+            mydiv=document.querySelector("#containerz");
+            fetch('sample.json')
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(obj){
+                mydiv.innerHTML=JSON.stringify(obj);
+            })
+            .catch(function(error){
+                console.log(error.message);
+            })
+        }
+            
+    
+   </script>
+   <script>
+    function fetchdata1(){
+        mydiv=document.querySelector("#containerz1");
+        fetch('Avengers.mp4')
+        .then(function(response){
+            return response.blob();
+        })
+        .then(function(data){
+            vid=document.createElement("video");
+            vid.setAttribute('width', '10%');
+            vid.setAttribute('height', '10%');   
+            vid.controls=true;
+            vid.src=URL.createObjectURL(data);
+            mydiv.appendChild(vid);
+        })
+        .catch(function(error){
+            console.log(error.message);
+        })
+    }
+        
+
+</script>
+<script>
+    function fetchdata2(){
+        mydiv=document.querySelector("#containerz2");
+        fetch('sample.txt')
+        .then(function(response){
+            return response.text();
+        })
+        .then(function(text){
+            mydiv.innerHTML=text;
+        })
+        .catch(function(error){
+            console.log(error.message);
+        })
+    }
+        
+
+</script>
+<script>
+    function getdata(){
+    /*	$.ajax({
+            url:'files/sample.txt',
+            method:'get',
+            success: function (result){
+                $("#container").html(result);
+            }
+        })
+        $.ajax('submit.php',{
+            method:'post',
+            data:{mydata:'this is my data',srn:'123'},
+            success:function(result,status,xhr){
+                $("#container").html(result+" "+status);
+            },
+            error:function(xhr,textstatus, errMsg){
+                console.log("Error:"+errMsg);
+            }
+        })	
+        $.getJSON('files/sample.json',
+            {name:'sujay', srn:'1'},
+            function (result,status,xhr){
+                $("#container").html(result.name+" "+status);
+            }
+        );*/
+        $("#containerz3").load('sample.txt',
+        
+            function(result,status,xhr){
+                console.log("status:"+status)
+            }
+        );
+    }
+        
+
+</script>
 </head>
 <body onload="init()">
 	<video id="v1"  autoplay muted controls="c1" height="200px" width="400px">
@@ -417,6 +525,15 @@ v1.setAttribute('height', '10%');
 <div id="container2"></div>
 <button onclick="getvideo()">Get Video</button>
 	<div id="container3"></div>
+    <button onclick="loaddata4()">Load Data</button>
+<div id="container4"></div>
+<pre>
+
+
+    JSON AND XML PARSER
+
+
+</pre>
     <p id="demo1"></p>
     <p id="demo2"></p>
     
@@ -465,5 +582,22 @@ v1.setAttribute('height', '10%');
 		console.log(sXML);
 		
 	</script>  
+    <pre>
+
+
+        JSON AND XML JQ
+    
+    
+    </pre>
+<button onclick="fetchdata()">Fetch Data</button>
+<div id="containerz"></div>
+<button onclick="fetchdata1()">Fetch Data</button>
+<div id="containerz1"></div>
+<button onclick="fetchdata2()">Fetch Data</button>
+<div id="containerz2"></div>
+<button onclick="getdata()">Fetch Data</button>
+<div id="containerz3"></div>
+<button onclick="fetchdata4()">Fetch Data</button>
+<div id="containerz4"></div>
 </body>
 </html>
