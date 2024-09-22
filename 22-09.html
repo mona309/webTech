@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+
+    <script>		
+		function init(){
+		 v1=document.querySelector("#v1");
+		 v1.play();
+		 setInterval(fun,5000);
+         c1=document.querySelector("#c1");
+		 ctx=c1.getContext("2d");
+		 ctx.fillStyle="#FF0000";
+		 ctx.arc(100,100,80,0, 2*Math.PI,1);
+		 ctx.fill();
+		 ctx.font = "30px Arial";
+         ctx.fillText("Hello World",200,50);
+		 ctx.moveTo(200, 0);
+		 ctx.lineTo(300, 100);
+		 ctx.stroke();
+		 ctx.rect(300, 100, 50, 50);
+		 ctx.stroke();
+		 }
+		function fun() {
+		tmp=Math.floor(Math.random()*(v1.duration-5));
+		console.log(tmp);
+		v1.currentTime=tmp;
+		
+		}
+		function init1(){
+			
+		p1=document.querySelector("#p");
+		p1.value+=20;
+		if(p1.value!=100)
+		setInterval(init1,1000);
+		}
+		
+		
+	</script>
+    <script type="text/javascript">
+		function getpos(){
+			navigator.geolocation.watchPosition(show,error);
+			}
+		function show(position){
+			ps=position;
+            c1=document.querySelector("#c2");
+			c1.innerHTML="Current Position:"+position.coords.latitude+ " "+position.coords.longitude;
+			}
+		function error(error) {
+			e=error;
+						}
+		
+		</script>
+	<script>
+        $(document).ready(function(){
+         $("p#c3").click(function(){
+          $(this).hide();
+          });
+        });
+        $(document).ready(function(){
+        $("button#b1").click(function(){
+          $("p#c3").hide();
+          });
+          });
+          $(document).ready(function(){
+        $("button#b2").click(function(){
+          $("p#c3").show();
+          });
+          });
+    </script>
+    <script>
+
+		$(document).ready(handle);
+		function handle(){
+			$("li.b1").click(function(){
+			$(this).hide();
+			});
+		}
+		$(document).ready(function(){
+			$("li.b1:even").css("color","blue");
+            var g13p=$("li#3").html()
+			console.log(g13p);
+			$("li#3").html(g13p+"->AFLL");
+			$("p#1").text("Hello World");
+			newli=document.createElement("li");
+            newli.className="b1";
+			$(newli).html("5. Math");
+			newli1=document.createElement("li");
+			$(newli1).html("6. Math1");
+			$("li.b1:last").after(newli);
+			$("li.b1:last").before(newli);
+			$("li#3").after(newli);
+			$("ul#2").append(newli,newli1);
+			$("li.b1:first").appendTo("ul#2");
+			
+		});
+	    $(document).ready(function(){
+		 $("#hide").click(function(){
+			$("li").hide(5000);
+		 });
+		 $("#show").click(function(){
+			$("li").show("slow");
+		 });
+		});
+        $(document).ready(function(){
+		 $("#hide1").click(function(){
+			$("li.b1").hide(5000);
+		 });
+		 $("#show1").click(function(){
+			$("li.b1").show("slow");
+		 });
+		});
+		
+		
+		</script>
+    <script>
+
+
+		$(document).ready(function(){
+		$("p.b2").click (function(){
+		$(this).css("color","blue").html("I was Clicked");
+					
+		})
+		});		
+		$(document).ready(function(){
+		$("p.b2h").on("click mouseover", function(){
+		$(this).css("color","red").html("I was Hovered");
+		})
+		});
+
+
+		$(document).ready(function(){
+		$("p.b22").on("click", function(event){
+		$(event.target).css("color","blue").html("I was Clicked");
+		})
+		$("p.b22h").mouseover (function(){
+			$("ul.b2").slideToggle("slow");
+			$("button.b2").toggle().html("hidden");
+		})
+		});
+        
+        
+		$(document).ready(function(){
+		$("p.b222").on("click", function(event){
+		$(event.target).css("color","blue").html("I was Clicked");
+		});
+		$("p.b222h").mouseover (function(){
+			$("ul.b2").slideToggle("slow");
+			if($("button.b2").attr("visible"))
+			  $("button.b2").hide().html("Hidden");
+			else
+				$("button.b2").show().html("Show");
+		})
+		$("li.g2").click(function(){
+			if($(this).css("opacity")==1)
+				$(this).animate({
+					left:"100px",
+					opacity:0.4,
+					fontSize:"3em"
+				 }, 1000);
+			else
+				$(this).animate({
+					left:"0px",
+					opacity:1,
+					fontSize:"3em"
+				 }, 1000);
+						
+		});
+		$("li.g22").click(function(){
+			$(this).fadeOut(1000,function(){
+				$(this).fadeIn(1000);
+			})
+		})
+		$("li.g222").click(function(){
+			$(this).fadeOut(1000,function(){
+				$(this).fadeIn(2000, function(){
+				$(this).click();
+			});
+			})
+		})
+		});
+		</script>
+    
+</head>
+<body onload="init()">
+	<video id="v1"  autoplay muted controls="c1" height="200px" width="400px">
+	<source src="Avengers.mp4" type="video/mp4"/>
+	</video><br/>
+    <audio preload id="a1"  controls="c2" >
+	<source src="Jai Ho.mp3" type="audio/mp3"/>
+	</audio><br/>		
+	<label for="p1"> Progress done on activity</label>
+	<progress id="p" value="30" max="100">
+	</progress><br/>
+    <canvas id="c1" width="400px" height="200px" 
+		style="border:1px solid #000000;">
+		
+		</canvas>
+		<svg width="400px"  height="200px" 
+		style="border:1px solid #000000";>
+		<!--<circle cx="100" cy="80" r="80" stroke="green"
+			stroke-width="4" fill="red">-->
+	<text x="15" y="15" fill="red" transform="rotate(30 20,40)">
+	I love SVG </text>
+
+		</circle>
+		</svg><br/>
+        <button onclick="getpos()"> Get Current Position</button>
+        <p id="c2"></p>
+        <p id="c3"> Click me, I will disappear</p>
+        <p id="c3"> Click me Away</p>
+        <p id="c3"> Click me too</p>
+        <br/>
+        <button id="b1"> Click me to hide all Paragragh</button><br/>
+        <button id="b2"> Click me to unhide all Paragragh</button>
+        <div>
+            <p>original:    </p>
+            <p> Subjects</p>
+		<ul>
+			<li> Data Structures</li>
+			<li id="g1">Web Technologies </li>
+			<li> Data Science</li>
+			<li> DDCO</li>
+		</ul>
+		<button id="hide"> Click button to hide all list elements</button>
+		<button id="show"> Click button to show all list elements</button>
+        </div>
+        <p id="1"> Subjects</p>
+		<ul id="2">
+			<li class="b1"> 1. Data Structures</li>
+			<li class="b1" id="3">2. Web Technologies </li>
+			<li class="b1"> 3. Data Science</li>
+			<li class="b1"> 4. DDCO</li>
+		</ul>
+		<button id="hide1"> Click button to hide all list elements</button>
+		<button id="show1"> Click button to show all list elements</button>
+    
+        <div class="b2"></div>
+		<p class="b2"> Subjects</p>
+
+		<p class="b22"> Subjects</p>
+
+		<p class="b222"> Subjects</p>
+        <p class="b2h"> hover Subjects</p>
+
+		<p class="b22h"> hover Subjects</p>
+
+		<p class="b222h"> hover Subjects</p>
+		<ul class="b2">
+				<li class="g2"> Data Structures </li>
+				<li class="g22"> Web Technologies</li>
+				<li class="g222"> Data Science</li>
+				<li class="b2"> AFLL </li>
+		</ul>
+		<button class="b2">Click</button>
+		</div>
+<pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+
+</body>
+</html>
