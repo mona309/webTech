@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REACT</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        .greeting {
+            color: blue;
+        }
+        .shocking {
+            color: red;
+        }
+        p{
+            text-decoration: underline;
+            color: palevioletred;
+        }
+    </style>
+</head>
+<body>
+    <p>render 1</p>
+    <div id="container"></div>
+    <script type="text/babel">
+        const root = ReactDOM.createRoot(document.querySelector("#container"));
+        root.render(
+            React.createElement("h1", {style: {color: "red"}}, "Introduction to React")
+        );
+    </script>
+
+
+<p>render 2</p>
+    <div id="container1"></div>
+    <script type="text/babel">
+        const root1 = ReactDOM.createRoot(document.querySelector("#container1"));
+        root1.render(
+            <h1>React World</h1>
+        );
+    </script>
+
+
+<p>render 3</p>
+    <div id="container2"></div>
+    <script type="text/babel">
+        class Helloworld extends React.Component {
+            render() {
+                return <h1>Hello {this.props.greet}</h1>;
+            }
+        }
+
+        const root2 = ReactDOM.createRoot(document.querySelector("#container2"));
+        root2.render(
+            <div>
+                <Helloworld greet="Batman"/>
+                <Helloworld greet="Ironman"/>
+            </div>
+        );
+    </script>
+
+
+<p>render 4</p>
+    <div id="root"></div>
+    <script type="text/babel">
+        class Car extends React.Component {
+            render() {
+                return <h2>I am a {this.props.color} Car!</h2>;
+            }
+        }
+
+        const root3 = ReactDOM.createRoot(document.getElementById('root'));
+        root3.render(<Car color="blue"/>);
+    </script>
+
+
+<p>render 5</p>
+    <div id="container4"></div>
+    <script type="text/babel">
+        class Helloworld extends React.Component {
+            render() {
+                return (
+                    <div className={this.props.type}>
+                        <h1>{this.props.children}</h1>
+                    </div>
+                );
+            }
+        }
+
+        const root4 = ReactDOM.createRoot(document.getElementById('container4'));
+        root4.render(
+            <div>
+                <Helloworld type="greeting">
+                    Hello Batman
+                </Helloworld>
+                <Helloworld type="shocking">
+                    Ironman, Where is Thor?
+                </Helloworld>
+            </div>
+        );
+    </script>
+
+
+<p>render 6</p>
+    <div id="root5"></div>
+    <script type="text/babel">
+        // Inline style in React
+        // In JSX, JavaScript expressions are written inside curly braces, and since JavaScript objects also use curly braces, the styling in the example below is written inside two sets of curly braces {{}}.
+        class Car extends React.Component {
+            render() {
+                return <h2 style={{backgroundColor: "lightblue"}}>I am a Red Car!</h2>;
+            }
+        }
+
+        const root5 = ReactDOM.createRoot(document.getElementById('root5'));
+        root5.render(<Car />);
+    </script>
+
+
+<p>render 7</p>
+    <div id="container6"></div>
+    <script type="text/babel">
+        // All letters are displayed with the same background color yellow.
+        class Letter extends React.Component {
+            render() {
+                var letterStyle = {
+                    backgroundColor: "#ffde00",
+                    color: "#333",
+                    display: "inline-block",
+                    padding: "25px",
+                    margin: "25px"
+                };
+                return <div style={letterStyle}>
+                    {this.props.children}
+                </div>;
+            }
+        }
+
+        const root6 = ReactDOM.createRoot(document.getElementById('container6'));
+        root6.render(
+            <div>
+                <Letter>A</Letter>
+                <Letter>E</Letter>
+                <Letter>I</Letter>
+                <Letter>O</Letter>
+                <Letter>U</Letter>
+            </div>
+        );
+    </script>
+
+
+<p>render 8</p>
+    <div id="container7"></div>
+		<script type="text/babel">
+			// Different background color is assigned to each letter using the bgcolor attribute.
+			// The background color can be passed to the component using this.props.bgcolor.
+			class Letter extends React.Component {
+				render() {
+					var letterStyle = {
+						backgroundColor: this.props.bgcolor,
+						color: "#333",
+						display: "inline-block",
+						padding: "25px",
+						margin: "25px"
+					};
+					return (
+						<div style={letterStyle}>
+							{this.props.children}
+						</div>
+					);
+				}
+			}
+
+			const root7 = ReactDOM.createRoot(document.getElementById('container7'));
+			root7.render(
+				<div>
+					<Letter bgcolor="#58B3FF">A</Letter>
+					<Letter bgcolor="#FF605F">E</Letter>
+					<Letter bgcolor="#FFD52E">I</Letter>
+					<Letter bgcolor="#49DD8E">O</Letter>
+					<Letter bgcolor="#AE99FF">U</Letter>
+				</div>
+			);
+		</script>
+
+
+<p>render 9</p>
+    <div id="container8"></div>
+		<script type="text/babel">
+			var des = document.querySelector("#container8");
+
+			// display="inline-block" - Does not add a line break after the element, so the element can sit next to other elements
+			// display="none" - Hides the element
+			class Letter extends React.Component {
+				render() {
+					var letterStyle = {
+						backgroundColor: this.props.bgcolor,
+						color: "#333",
+						display: this.props.display,
+						padding: "25px",
+						margin: "25px"
+					};
+					return (
+						<div style={letterStyle}>
+							{this.props.children}
+						</div>
+					);
+				}
+			}
+
+			const root8 = ReactDOM.createRoot(des);
+			root8.render(
+				<div>
+                    <div>with visible</div>
+					<Letter display="inline-block" bgcolor="#58B3FF">A</Letter>
+					<Letter display="visible" bgcolor="#FF605F">E</Letter>
+					<Letter display="inline-block" bgcolor="#FFD52E">I</Letter>
+					<Letter display="inline-block" bgcolor="#49DD8E">O</Letter>
+					<Letter display="inline-block" bgcolor="#AE99FF">U</Letter>
+                    <div>with none</div>
+                    <Letter display="inline-block" bgcolor="#58B3FF">A</Letter>
+					<Letter display="none" bgcolor="#FF605F">E</Letter>
+					<Letter display="inline-block" bgcolor="#FFD52E">I</Letter>
+					<Letter display="inline-block" bgcolor="#49DD8E">O</Letter>
+					<Letter display="inline-block" bgcolor="#AE99FF">U</Letter>
+				</div>
+			);
+		</script>
+</body>
+</html>
