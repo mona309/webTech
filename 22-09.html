@@ -233,6 +233,96 @@
             }
         }
     </script>
+    <script>
+		function loaddata1(){
+		xhr1=new XMLHttpRequest();
+		xhr1.open("get","sample.json",true);
+		xhr1.onreadystatechange=showdata1;
+		xhr1.responseType="json";
+		xhr1.send();
+		}
+		function showdata1(){
+			console.log("In showdata");
+			if(this.readyState==4 && this.status==200){
+				console.log("inside if");
+                console.log(this.response);
+				//this.response or responseText or responseXML
+			/*document.querySelector("#container1").innerHTML=
+			this.response.getElementsByTagName("srn")[1].firstChild.nodeValue;*/
+			//this.response=JSON.parse(this.responseText);
+			document.querySelector("#container1").innerHTML=this.response['srn'];
+			}
+		}
+		
+		
+	   </script>
+    <script>
+		function senddata(){
+		xhr2=new XMLHttpRequest();
+		xhr2.open("post","dummy.php",true);
+		xhr2.onreadystatechange=showdata2;
+		xhr2.responseType="json";
+		xhr2.setRequestHeader("Content-type",
+		"application/x-form-url-encoded");
+		//str=myform.children[i].value
+		let fd=new FormData();
+		fd.append("name","Sujay");
+		fd.append("srn","PES2UG20CS247");
+		//xhr2.send("name=Sujay&srn=PES2UG20CS247");
+		xhr2.send(fd);
+		}
+		function showdata2(){
+			console.log("In showdata");
+			if(this.readyState==4 && this.status==200){
+				console.log("inside if");
+				//this.response or responseText or responseXML
+			/*document.querySelector("#container2").innerHTML=
+			this.response.getElementsByTagName("srn")[1].firstChild.nodeValue;
+			//this.response=JSON.parse(this.responseText);
+			document.querySelector("#container2").innerHTML=this.response['srn'];*/
+			}
+            else{console.error(xhr2);
+    }
+            }
+		
+		
+		
+	   </script>
+    <script>
+		function getvideo(){
+		xhr=new XMLHttpRequest();
+		xhr.open("get","Avengers.mp4?p=" + (new Date).getTime(),true);
+		xhr.onreadystatechange=showdata3;
+		xhr.responseType="blob";
+		xhr.setRequestHeader("Content-type",
+		"application/x-form-url-encoded");
+		
+		
+		xhr.send();
+		}
+		function showdata3(){
+			console.log("In showdata");
+            
+			if(this.readyState==4 && this.status==200){
+				console.log("inside if");
+				//this.response or responseText or responseXML
+			/*	document.querySelector("#container").innerHTML=
+			this.response.getElementsByTagName("srn")[1].firstChild.nodeValue;*/
+			//this.response=JSON.parse(this.responseText);
+			/*document.querySelector("#container").innerHTML=this.response['srn'];*/
+			let v1= document.createElement("video");
+
+v1.setAttribute('width', '10%');
+v1.setAttribute('height', '10%');
+			v1.src=URL.createObjectURL(this.response);
+			v1.controls=true;
+			document.querySelector("#container3").appendChild(v1);
+		
+        }else{console.log(xhr);}
+		}
+		
+		
+	   </script>
 </head>
 <body onload="init()">
 	<video id="v1"  autoplay muted controls="c1" height="200px" width="400px">
@@ -314,8 +404,66 @@
 
 
 
+
+
+
+
 </pre>
 <button onclick="loaddata()">Load Data</button>
 <div id="container"></div>
+<button onclick="loaddata1()">Load Data</button>
+<div id="container1"></div>
+<button onclick="senddata()">Send Data</button>
+<div id="container2"></div>
+<button onclick="getvideo()">Get Video</button>
+	<div id="container3"></div>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    
+<script>
+  var str= '{"name": "Thor: Ragnarok", "cast": "Chris Hemsworth, Tom Hiddleston"}';
+  
+  var obj=JSON.parse(str);
+  
+  document.getElementById("demo1").innerHTML=obj.name;
+  
+  obj.year="2021"
+  obj.rating="7.5"
+  str=JSON.stringify(obj);
+  
+  document.getElementById("demo2").innerHTML=str;
+      
+</script>  
+<p id="demo11"></p>
+		<p id="demo21"></p>
+		
+	<script>
+	    
+	  text = 
+			"<bookstore>"+
+				"<book>" +
+					"<title>Everyday Italian</title>" +
+					"<author>Giada De Laurentiis</author>" +
+					"<year>2005</year>" +
+				"</book>"+
+			"</bookstore>";
+			
+	 	var parser=new DOMParser();
+		xmlDOM=parser.parseFromString(text,"text/xml");
+		
+		title=xmlDOM.getElementsByTagName("title")[0];
+		title.childNodes[0].nodeValue += "-Modified";
+		
+		document.getElementById("demo11").innerText=title.childNodes[0].nodeValue;
+        console.log(text);
+		title1=xmlDOM.getElementsByTagName("author")[0];
+		title1.childNodes[0].nodeValue += "-Modified";
+		
+		document.getElementById("demo21").innerText=title1.childNodes[0].nodeValue;
+		var oSerializer = new XMLSerializer();
+		var sXML = oSerializer.serializeToString(xmlDOM);
+		console.log(sXML);
+		
+	</script>  
 </body>
 </html>
