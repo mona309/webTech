@@ -259,7 +259,7 @@
     <script>
 		function senddata(){
 		xhr2=new XMLHttpRequest();
-		xhr2.open("post","http://localhost:3000/home/monisha/sem3/webT/dummy.php",true);
+		xhr2.open("post","dummy.php",true);
 		xhr2.onreadystatechange=showdata2;
 		xhr2.responseType="json";
 		xhr2.setRequestHeader("Content-type",
@@ -274,15 +274,15 @@
 		function showdata2(){
 			console.log("In showdata");
 			if(this.readyState==4 && this.status==200){
+                console.log(xhr2);
 				console.log("inside if");
 				//this.response or responseText or responseXML
 			/*document.querySelector("#container2").innerHTML=
-			this.response.getElementsByTagName("srn")[1].firstChild.nodeValue;
+			this.response.getElementsByTagName("srn")[1].firstChild.nodeValue;*/
 			//this.response=JSON.parse(this.responseText);
-			document.querySelector("#container2").innerHTML=this.response['srn'];*/
+			document.querySelector("#container2").innerHTML=this.response['srn'];
 			}
             else{console.error(xhr2);
-				document.querySelector("#container2").innerHTML="I know.. this doesn't print here cuz cross-origin not there for this and php server"
     }
             }
 		
