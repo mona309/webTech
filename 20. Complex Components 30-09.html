@@ -10,16 +10,16 @@
 
 </head>
 <body>
-
+<hr/>
 <h1> react gud cuz resuable components </h1>
-
+<hr/>
 <div id="container"></div>
 <script type="text/babel">
     class ResImage extends React.Component {
     render() {
         return (
         <div>
-            <img src={this.props.src} width="100" height="100" style={this.props.style}></img>
+            <img src={this.props.src} style={this.props.style}></img>
         </div>
         );
     }
@@ -55,29 +55,88 @@
     }
     }
     ReactDOM.render(
-    <div>
+    <div style={{display: "flex",flex_wrap:"wrap",justify_content: "space-between",}}>
         <SrchResult
         src="Untitled.jpeg"
         link="https://www.britannica.com/animal/tiger"
         linktext="britannica.com"
         caption="chameleon | Facts, Information and Habitat…"
-        style={{border:"10px solid #00ff",}}
+        style={{border:"10px solid #00ff",width:"200px",height:"200px",}}
         />
-        <br/><hr/>
+        <hr/>
         <SrchResult
         src="nasha.jpeg"
         link="https://www.britannica.com/animal/peacock"
         linktext="britannica.com"
         caption="nasha| Facts and Habitat | Britannica"
-        style={{border:"10px solid #00ff55",}}
+        style={{border:"10px solid #00ff55",width:"200px",height:"200px",}}
         />
-        <br/><hr/>
+        <SrchResult
+        src="F-TT.png"
+        style={{border:"10px solid #00ff55",position:"fixed",left:"0px",bottom:"0px",width:"200px",height:"100px",}}
+        />
+        <br/>
     </div>,
     document.querySelector("#container")
     );
 </script>
-
+<hr/>
 <div id="container1"></div>
+<hr/>
+<pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
 <script type="text/babel">
     var destination = document.querySelector("#container1");
     class HelloWorld extends React.Component {
