@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-		<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-		<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>	
+	<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>	
 
 </head>
 <body>
@@ -19,7 +19,7 @@
     render() {
         return (
         <div>
-            <img src={this.props.src} width="100" height="100"></img>
+            <img src={this.props.src} width="100" height="100" style={this.props.style}></img>
         </div>
         );
     }
@@ -61,6 +61,7 @@
         link="https://www.britannica.com/animal/tiger"
         linktext="britannica.com"
         caption="chameleon | Facts, Information and Habitat…"
+        style={{border:"10px solid #00ff",}}
         />
         <br/><hr/>
         <SrchResult
@@ -68,6 +69,7 @@
         link="https://www.britannica.com/animal/peacock"
         linktext="britannica.com"
         caption="nasha| Facts and Habitat | Britannica"
+        style={{border:"10px solid #00ff55",}}
         />
         <br/><hr/>
     </div>,
