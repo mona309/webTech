@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG and Canvas Example</title>
+    <style>
+        svg{display: "flex";
+        flex-wrap:wrap;
+        justify-content:space-between;
+        flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <svg width="200" height="100">
+        <rect x="10" y="10" width="180" height="50" fill="yellow" stroke="red" stroke-width="3"/>
+      </svg>
+      
+      <svg width="200" height="100">
+        <defs>
+            <linearGradient id="grad1">
+                <stop offset="0%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgb(0,255,0);stop-opacity:1" />
+            </linearGradient>
+        </defs>
+        <ellipse cx="100" cy="40" rx="70" ry="30" fill="url(#grad1)" />
+      </svg>
+      <br/>
+      <canvas id="myArc" width="200" height="200"></canvas>
+      <script>
+        var c = document.getElementById("myArc");
+        var ctx = c.getContext("2d");
+        ctx.lineWidth=1;
+        ctx.strokeRect(15,15,180,150);
+        ctx.beginPath();
+        ctx.arc(100, 90, 30, 0, Math.PI);
+        ctx.fillStyle = "blue";
+        ctx.fill();
+      </script>
+      
+      <canvas id="myLine" width="200" height="200"></canvas>
+      <script>
+        var c = document.getElementById("myLine");
+        var ctx = c.getContext("2d");
+
+        ctx.lineWidth=1;
+        ctx.strokeRect(15,15,180,150);  
+        ctx.beginPath();
+        ctx.moveTo(18, 165);
+        ctx.lineTo(195, 18);
+        ctx.strokeStyle = "brown";
+        ctx.lineWidth = 7;
+        ctx.stroke();
+      </script>
+
+</body>
+</html>

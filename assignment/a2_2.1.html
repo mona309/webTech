@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+</head>
+<body>
+    <p id="t">Method Chaining</p>
+    <button id="b">click</button>
+    <script>
+        $('#b').click(
+            function(){
+                $('#t').fadeOut('slow').slideUp('slow').slideDown('slow');
+            }
+        );
+    </script>
+</body>
+</html>

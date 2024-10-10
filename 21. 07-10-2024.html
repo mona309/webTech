@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>React Example</title>
+<script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    var ev;
+    var colors = ["red", "purple", "green", "blue", "yellow"];
+    class CustomText extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.textPara = null;
+        this.setTextRef = (element) => {
+        this.textPara = element;
+        };
+        this.changeText = (e) => {
+        if (this.textPara) {
+            ev = e;
+            console.log(typeof e);
+            console.log(e.target.value + " clicked");
+            let i = Math.floor(Math.random() * 100) % 5;
+            this.textPara.innerHTML = colors[i];
+            this.textPara.style.color = colors[i];
+            return false;
+        }
+        };
+    }
+
+    componentDidMount() {}
+
+    render() {
+        return (
+        <div>
+            <h1 ref={this.setTextRef}>This is test</h1>
+            <input
+            type="button"
+            value="Change the text"
+            onClick={this.changeText}
+            />
+        </div>
+        );
+    }
+    }
+    ReactDOM.render(<CustomText />, document.getElementById("root"));
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Text Color</title>
+    <style>
+        .content {
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #000;
+            text-align: center;
+            display: inline-block;
+        }
+        .text {
+            font-size: 20px;
+            margin: 10px;
+            transition: opacity 0.5s ease-in-out, color 0.5s ease-in-out;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .hidden {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content">
+        <p class="text" id="web-tech">Web Tech.</p>
+        <p class="text" id="plain-text">Plain text</p>
+        <button id="changeColorButton">Change Color</button>
+    </div>
+
+    <script>
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function changeTextColor() {
+            const texts = document.querySelectorAll('.text');
+            texts.forEach((text) => {
+                text.classList.add('hidden');
+                setTimeout(() => {
+                    text.style.color = getRandomColor();
+                    text.classList.remove('hidden');
+                }, 500);
+            });
+        }
+
+        document.getElementById('changeColorButton').addEventListener('click', changeTextColor);
+    </script>
+
+</body>
+</html>

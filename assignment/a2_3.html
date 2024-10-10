@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Text File with XHR</title>
+    <style>
+        .content {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .response-box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 80%;
+            margin: 20px auto;
+            min-height: 50px;
+            background-color: #f9f9f9;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h2>Web Technologies Read text file using XHR</h2>
+        <button id="loadFileBtn">Click To Read Text File</button>
+        <div class="response-box" id="responseText"></div>
+    </div>
+
+    <script>
+        document.getElementById('loadFileBtn').addEventListener('click', function () {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'sample.txt', true);
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    document.getElementById('responseText').textContent = xhr.responseText;
+                } else {
+                    document.getElementById('responseText').textContent = 'Error loading file.';
+                }
+            };
+            xhr.send();
+        });
+    </script>
+
+</body>
+</html>
