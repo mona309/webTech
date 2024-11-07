@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function init(){
+            p1=document.querySelector("p");
+            p1.style.color="blue";
+            list=document.querySelectorAll("li.g1"); //getElemntByCLassNAme
+            for(i=0;i<list.length;i++)
+                list[i].innerText=list[i].innerText.toUpperCase();
+        
+                newele=document.createElement("li");
+                newele.innerText="AFLL";
+                ull=document.querySelector("ul");
+                ull.appendChild(newele);
+                ull.insertBefore(newele,list[0]);
+        }
+        
+    </script>
+</head>
+<body onload="init()">
+    <p id="a1">subst</p>
+    <script>
+        function display(){
+            var a=10;
+            document.write("<br>local variable",a);
+        }   
+        var a;
+        document.write(typeof(a)); //undefined
+        var a=true;
+        document.write(typeof(a)); //boolean
+        var a=20;
+        document.write("<br>global variable",a);
+        display();
+        document.write("<br>global variable",a);
+        x=30;   //default var
+        document.write("<br>",x);
+        //let x=50; the machine 50 are there;
+        //document.write("<br>",x);   //syntax error cuz let doesnt allow redeclaration
+        let y=50;
+        document.write("<br>",y);
+        var aa=30;
+        var bb=10;
+        linebreak="<br>"
+        document.write("<br>",(aa>bb)?aa:bb);
+        document.write(linebreak);
+        document.write("aa%bb=");
+        res=aa%bb;
+        document.write(res);
+        document.write(linebreak);
+        //aa=aa++;
+        document.write("<br>",aa++);
+        //aa=++aa;
+        document.write("<br>",++aa);
+        //aa=aa--;
+        document.write("<br>",aa--);
+        //aa=--aa;
+        document.write("<br>",--aa);
+        document.write(linebreak);
+        document.write(16+4+"Volov"+15+14);
+        document.write(linebreak);
+        document.write("F"+"section");
+        document.write(linebreak);
+        document.write("F"+" "+"section");
+        document.write(linebreak);
+        document.write(("Volvo"+16)+24);
+        document.write(linebreak);
+        document.write(10+12+"a"+1+(("Volvo"+16)+24));
+        document.write(linebreak);
+        const cars=["volvo","skoda","mercedes","maruthi suzuki","hyundai","scorpio","jaguar"];
+        let text="";
+        for(let i=0;i<cars.length;i++){
+            document.write(linebreak,cars[i]);
+            //text+=cars[i];
+            //text+=linebreak;
+        }
+        let myele=document.getElementById("a1");
+        myele.style.color = "red";
+        document.getElementById("a1").innerHTML+="hello";
+        console.log(1==1);
+        console.log("1"==1);
+        console.log("1"===1);
+        console.log("hello"==="hello");
+        //only declaration are hoisted not inirialuxetion
+        xx=5;
+        document.write(linebreak,xx,linebreak);
+        var xx;
+        var xxx;
+        xxx=5;
+        document.write(xxx,linebreak);
+        //both work
+        document.write(xxxx,linebreak);
+        var xxxx;
+        xxxx=5;
+        //doesn't work; - undefined
+        //document.write(xxxxx,linebreak);
+        //xxxxx=100;
+        //22-08.html:83 Uncaught ReferenceError: xxxxx is not defined at 22-08.html:83:24
+        var hello=function disp(){return "hello";}
+        document.write(hello());
+        fun1=()=>"<br>hello arrow fucntion";
+        document.write(fun1());
+        function add(ab,ba){return ab+ba;}
+        var xadd=add(2,5);
+        document.write(linebreak,xadd);
+        //var ref =add;
+        //console.log(ref(5,8));
+        var ref=function (aaa,bbb){return aaa+bbb;}
+        console.log(ref(5,5));
+        console.log(ref(5,6,7,8));
+        console.log(ref(5));
+        console.log(ref("1","1"));
+        console.log(ref("nand","mon"));
+
+        var ref1=function (aaa,bbb){return aaa-bbb;}
+        console.log(ref1(5,5));
+        console.log(ref1(5,6,7,8));
+        console.log(ref1(5));
+        console.log(ref1("1","1"));
+        console.log(ref1("nand","and"));
+
+        var ref2=function (aaa,bbb){
+            var s=0;
+            for(var i in arguments) s+=arguments[i];
+            return s;
+        }
+        console.log(ref2(5,5));
+        console.log(ref2(5,6,7,8));
+        console.log(ref2(5));
+        console.log(ref2("1","1"));
+        console.log(ref2("nand","mon"));
+
+        var ref3=function (){
+            var s=0;
+            for(var i in arguments) s+=arguments[i];
+            return s;
+        }
+        console.log(ref3(5,5));
+        console.log(ref3(5,6,7,8));
+        console.log(ref3(5));
+        console.log(ref3("1","1"));
+        console.log(ref3("nand","mon"));
+    </script>
+<br><hr><br>
+<script>
+    /*
+    
+    static class cannot be instantiated-cannot make object of it
+    
+    global objects -
+    -math - math built-in functions
+    -number -
+            MAX_VALUE
+            MIN_VALUE
+            NaN
+            POSITIVE_INFinity
+            NEGTAVE_INFIVITY
+            use isNaN(a) to test is a is NaN
+    -string - string manipulation methods
+    -array - 
+            let arr = new Array(100) - creates array of 100 elements
+            - if empty dynamic undefined object
+            let arr = new Array(10,20) - creates 2 ele
+            var l =[1,"ii","4"]; - lieral arrays cuz a variable has no specific type
+            var a=[1,2];
+            console.log(a);     >>[1,2]
+            a.length=7 ->length property
+            console.log(a);     >>[1,2,<5 empty items>]
+            array elme can be objects - functions objects arrays inside arrays
+            a[0]=Date.now; a[1]=myFunction; a[2]=myCars;
+            array methods - 
+                push
+                pop 
+                shift 
+                unshift 
+                join 
+                indexOf 
+                sort 
+                concat 
+                slice
+                splice
+            
+    -date
+    -window
+    -document
+    */
+    function myfun(){
+        console.log("inside myfun");
+    }
+    
+    var a=[100,"abc",[1,2],myfun()];
+    console.log(a);
+    /*
+    math and number static class
+    
+    
+    inside myfun
+    Array(4)
+    0: 100
+    1: "abc"
+    2: (2) [1, 2]
+    3: undefined
+    length: 4
+    [[Prototype]]: Array(0)
+    
+    inside myfun
+    (4) [100, 'abc', Array(2), undefined]
+    */
+    var b=new Array();
+    b[0]=Date.now();
+    b[1]=myfun();
+    b[2]="abc";
+    console.log(b);
+    var c=["abc","bcd","cde"]
+    console.log(c.concat(c[2])); //b[]+""
+    c.pop();
+    console.log(c);
+    c.push("dff");
+    console.log(c);
+    c.shift();
+    console.log(c);
+    c.unshift("aaa","aaaaa");
+    console.log(c);
+    
+    var d=[0,1,2,3,4,5,6,7,8,9];
+    console.log(d.slice(1,4));
+    console.log(d);
+    
+    
+    var d=[0,1,2,3,4,5,6,7,8,9];
+    console.log(d.splice(2,4,44)); //from 2nd index remove 4 elements and replace with 44;
+    console.log(d);
+    var d=[0,1,2,3,4,5,6,7,8,9];
+    console.log(d.splice(2,0,44)); //from 2nd index remove 0 elements and insert 44;
+    console.log(d);
+    
+    var d=["0","1","2","3","4","5","6","7"];
+    console.log(d.splice(2,4,"44"));
+    console.log(d);
+    
+    var d=[12,42,2,[2,6,2],44,6,9];
+    console.log(d);
+    console.log(d.sort());      //only sorts 1st digit
+    console.log(d);
+    console.log(d.sort((a,b)=>a-b));
+    
+    console.log(d.sort((a,b)=>b-a));
+    
+    console.log(d.sort());
+    
+    const fruits = ["Banana", "Orange", "Apple", "Mango"];
+    
+    // Sort the Array
+    fruits.sort();
+    
+    // Reverse the array
+    fruits.reverse();
+    
+    const points = [40, 100, 1, 5, 25, 10];
+    
+    // Sort the Array
+    console.log(points.sort(function(a, b){return a-b}));//asc
+    console.log(points.sort(function(a, b){return b-a}));//desc
+    console.log(points.sort(function(a, b){return a-b}));
+    let lowest = points[0];
+    console.log(lowest);
+    console.log(points.sort(function(a, b){return b-a}));
+    var highest = points[0];
+    console.log(highest);
+    console.log(points.sort(function(a, b){return a-b}));
+    var highest = points[points.length-1];
+    console.log(highest);
+    function sanitize(x){
+        if (isNaN(x)) return NaN;
+        return x;
+    }
+    console.log(sanitize("1"));
+    
+    console.log(sanitize("notanymber"));
+    
+    console.log(sanitize(1));
+    
+    console.log(sanitize(NaN));
+    
+    console.log(sanitize("NaN"));
+    
+    var now=new Date();
+    
+    console.log(Math.E);
+    console.log(Math.PI);
+    
+    console.log(Math.SQRT2); 
+    console.log(Math.SQRT1_2); 
+    console.log(Math.sqrt(144.00)); 
+    console.log(Math.log(314)); 
+    console.log(Math.sin(0));
+    console.log(Math.cos(0));
+    
+    console.log(Math.ceil(1.359));
+    console.log(Math.floor(1.359));
+    console.log(Math.ceil(-1.359));
+    console.log(Math.floor(-1.359));
+    console.log(Math.abs(-1.359));
+    var num = 123.789;
+    
+    num2 = parseInt( num );
+    
+    num3 = parseInt( num, 8);
+    
+    document.write(num2 + ":::" + num3);
+    count=0;
+    function log(){
+        console.log(count);
+        count++;
+        if (count==4) clearInterval(t); 
+    }
+    setTimeout(log,3000);//de;ay utput for 3 sec
+    var t=setInterval(log,2000); //repeat every 2 sec
+       //not stopping;
+    //after 3 sec 0 print tafter 2 sec 1 print after 2 sec 2 print
+    
+    setTimeout(alert('hello'),3000);//de;ay utput for 3 sec
+    
+    </script>
+<br><hr><br>
+<script>
+    //pure object is reference data type
+    var obj1= new Object();
+    var obj2=obj1;
+    var o={
+        "firstname":"a",
+        lastname:"b",
+        "func":function(){ alert("hello"+this.firstname+this.lastname);}
+    }
+    o.func();
+
+    let item1 = { 
+        iname : "Reebok", 
+        iprice : "Rs 2000", 
+        show : function(){ 
+        document.write("iname: "+this.iname+" iprice: "+this.iprice+"<br/>"); 
+        } 
+    }; 
+    
+    let item2 = Object.create(item1); // item2 will be replica of item1 
+    
+    let item3 = Object.create(item1, { 
+        iname:{value:"PS5"}, 
+        iprice:{value:"Rs 40000"}, 
+        idesc:{value:"UHD 1080p"} 
+        }
+    ); 
+    
+    item3.show(); 
+    function item(name, price){ 
+    this.iname = name; 
+    this.iprice = price; 
+    } 
+    
+    item.prototype.show = function(){ 
+    document.write("iname: "+this.iname+" iprice: "+this.iprice+"<br/>"); 
+    } 
+    
+    function game_cons(name, price, desc){ 
+    item.call(this, name, price); 
+    this.desc = desc; 
+    } 
+    //item.show.call(xyz) 
+    game_cons.prototype = new item(); 
+    game_cons.prototype.constructor = game_cons; 
+    let gc1 = new game_cons("PS5", "Rs 40000", "UHD 1080p"); 
+    
+    //var student=new Person("John",3,"E");
+    
+</script>
+<br><hr><br>
+<p>subjects</p>
+    <ul>
+        <li>web tech</li>
+        <li class="g1">unit 1</li>
+        <li class="g1">unit 2</li>
+    </ul>
+    <p>event handling</p>
+    <button id="ch1">click here1</button>
+
+    <button id="ch2">click here2</button>
+
+    <button id="ch3">click here3</button>
+    <form name="geeral">
+        Keyboard: <input type="text" id="fe"><br>
+
+        enter name: <input type="text" id="fhe"><br>
+    </form>
+</body>
+</html>

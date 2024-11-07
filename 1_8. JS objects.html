@@ -1,280 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>My first HTML document</title>
-        <style type="text/css">
-            .divStyle
-            {
-                display: table-cell;
-                border: 5px solid black;
-                padding: 20px;
-                text-align: center;
-            }
-            #myDiv1, #myDiv2 {
-            background-color: coral;
-            padding: 50px;
-            }
-
-            #myP1, #myP2 {
-            background-color: white; 
-            font-size: 20px;
-            border: 1px solid;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .divStyle
+        {
+            display: table-cell;
+            border: 5px solid black;
             padding: 20px;
+            text-align: center;
+        }
+        #myDiv1, #myDiv2 {
+        background-color: coral;
+        padding: 50px;
+        }
+
+        #myP1, #myP2 {
+        background-color: white; 
+        font-size: 20px;
+        border: 1px solid;
+        padding: 20px;
+        }
+    </style>
+    <script>
+        function init(){
+            p1=document.querySelector("p");
+            p1.style.color="blue";
+            
+            list= document.querySelectorAll("li.g1");
+            for(i=0;i<list.length;i++)
+            list[i].innerText= list[i].innerText.toUpperCase();
+            
+            //Add new elements
+            newsub= document.createElement("li");
+            newsub.innerText= "AFLL";
+            ul1=document.querySelector("ul");
+            ul1.appendChild(newsub);
+            ul1.insertBefore(newsub,list[0]);
+            ul1.insertBefore(newsub,ul1.firstChild);
+            //list[0].remove();
+            //ul1.removeChild(list[0]);
+            //ul1.replaceChild(newsub, ul1.children[1]);
+            //ul1.replaceChild(newsub, ul1.children[2]);
+            list[0].parentNode.replaceChild(newsub, ul1.children[2]);
             }
-        </style>
-        <script>
-            function init(){
-                p1=document.querySelector("p");
-                p1.style.color="blue";
-                
-                list= document.querySelectorAll("li.g1");
-                for(i=0;i<list.length;i++)
-                list[i].innerText= list[i].innerText.toUpperCase();
-                
-                //Add new elements
-                newsub= document.createElement("li");
-                newsub.innerText= "AFLL";
-                ul1=document.querySelector("ul");
-                ul1.appendChild(newsub);
-                ul1.insertBefore(newsub,list[0]);
-                ul1.insertBefore(newsub,ul1.firstChild);
-                //list[0].remove();
-                //ul1.removeChild(list[0]);
-                //ul1.replaceChild(newsub, ul1.children[1]);
-                //ul1.replaceChild(newsub, ul1.children[2]);
-                list[0].parentNode.replaceChild(newsub, ul1.children[2]);
-                }
-            /* Event Handler Registration
-		inline: <p onclick="handle()"</p>
-		event Property: p1.onclick=handle
-		event Listener: p1.addEventListener("click", handle,true);
-		*/
-		function init(){
-			list=document.querySelectorAll("li");
-			for(let i in list)
-			list[i].onclick=handler;
-			document.querySelector("p#click").addEventListener("click", 
-			 function(event){
-			event.target.innerHTML= "I was clicked";
-				});
-			
-		}
-		
-		function handler(event){
-			ev=event;
-			console.log(event.target.innerHTML);
-			event.target.style.color="blue";
-			//event.preventDefault();
-		}
-            </script>
-	</head>
-	<body onload="init()">
-	<script type= "text/javascript" src="20-08.js"></script>
-	<script type= "text/javascript">
-	document.write("Hello World");
-	</script>
-		<p> This is the first Javascript program </p>
-	<script type="text/javascript">
-		document.write("Welcome to Web Technologies class");
-        var xx=10;
-			if (true) {
-				xx=20;
-				}
-				
-				console.log(xx);
-                let x=null;   //null
-			 let y;       // undefined
-			 let z=true;   //Boolean
-			 let a=10.22   // number
-			 let b="john"    //string
-			var num = 123.789; 		
-            console.log(num+ " " +typeof num); 			 
-			num=Number("10.22");     
-            console.log(num+ " " +typeof num);
-			let num1="10.22"-1;
-			console.log(num1+" "+typeof num1);
-			let num2=parseInt("10.22");
-			console.log(num2+ " "+typeof num2);
-			num = 123.789;
-			num2 = parseInt( num );
-			num3 = parseInt( num, 8);
-			document.write("<br/>"+num2 + " " + num3+"<br/>");
-            console.log(parseInt('123'));
-// 123 (default base-10)
-console.log(parseInt('123', 10));
-// 123 (explicitly specify base-10)
-
-console.log(parseInt('123', 8));
-// 123 (explicitly specify base-8)
-console.log(parseInt('   123 '));
-// 123 (whitespace is ignored)
-console.log(parseInt('077'));
-// 77 (leading zeros are ignored)
-console.log(parseInt('1.9'));
-// 1 (decimal part is truncated)
-console.log(parseInt('ff', 16));
-// 255 (lower-case hexadecimal)
-console.log(parseInt('0xFF', 16));
-// 255 (upper-case hexadecimal with "0x" prefix)
-console.log(parseInt('xyz'));
-// NaN (input can't be converted to an integer)
-var X=new Object();
-			 X.name="vikram"
-			 X.age=20;
-			 for (i in X)
-			    document.write(i+"=>"+X[i]+"<br>");
-			 var num=new Number("111");
-			 document.write(num+"<br/>");
-			 var str= new String("10 days");
-			 document.write(str+"<br/>");
-			 var dt =new Date(2010,10,20);  //month index 0 to 11
-			 document.write(dt+"<br/>");
-			 var Num2 = new Number("10 days");
-			 document.write(Num2+"<br/>");
-             console.log(1 == 1);
-			// expected output: true
-
-			console.log('hello' == 'hello');
-					// expected output: true
-
-            console.log('hello' == 'Hello');
-			console.log('1' ==  1);
-			// expected output: true
-            console.log('1' ===  1);
-			console.log(0 == false);
-			// expected output: true
-            var arr=[1,11,22,3,4,37,6];
-		function asc(a,b)
-		{
-		if (a>b)
-		return 1;
-		if(a<b)
-		return -1;
-		if(a==b)
-		return 0;
-		}
-		console.log(arr.sort(asc));
-
-		function add(a,b)
-		{
-			return a+b;
-		}
-		var XX=add(2,5);
-		console.log(XX);
-        var ref=add;
-		console.log(ref(5,8));
-
-		var ref=function(a,b){    //Anonymous functions
-			return a+b;
-			}
-			
-		console.log(ref(5,8, 20,30));   //only first 2
-		console.log(ref(5));     //b is undefined
-        var ref=function(...args){  
-			var s=0;
-			for(var i in args)
-			s=s+args[i];
-			return s;
-			}
-			
-		console.log(ref(5,8,20,30));
-		console.log(ref(5));     //b is undefined
-        // Math.random() Returns a value between 0-1
-        //To get a number between a and b
-        //var rnd =a+Math.floor(Math.random()*b-a)
-        var rnd= 1+Math.floor(Math.random()*99);
-        console.log(rnd);
-        /* var t= setTimeout(func-ref,time_in_ms)
+        /* Event Handler Registration
+    inline: <p onclick="handle()"</p>
+    event Property: p1.onclick=handle
+    event Listener: p1.addEventListener("click", handle,true);
+    */
+    function init(){
+        list=document.querySelectorAll("li");
+        for(let i in list)
+        list[i].onclick=handler;
+        document.querySelector("p#click").addEventListener("click", 
+         function(event){
+        event.target.innerHTML= "I was clicked";
+            });
         
-        execute func-ref once after time interval specified
-        ClearTimeout(t)   - Stop the execution of fun-ref
-        
-        var t =setInterval(fun-ref,time_in_ms);
-        Execute fun_ref repeatedly after everytime interval specified
-        ClearInterval(t)- Stop repeted execution of fun-ref*/
-        
-	
-	
-		count =0;
-		function log(){
-			console.log(count); count++;
-			if(count==5){
-            console.log("interval ending")
-			clearInterval(t);}
-			}
-		setTimeout(log,2000);
-		var t=setTimeout(log,2000);
-		clearTimeout(t);
-		var t=setInterval(log,2000);
-			if(count==5){
-            console.log("interval ending...")
-			clearInterval(t);}
-        var arr=[1,11,22,2,23,5];
-		//console.log(arr.sort());
-		function asc(a,b) {
-				return a-b;
-				
-		}
-		function desc(a,b) {
-				return b-a;
-				
-		}
-		console.log(arr.sort(asc));
-		console.log(arr.sort(desc)); 
-        var arr=[1,11,22,2,23,5];
-		//console.log(arr.sort());
-		function asc(a,b) {
-				return a-b;
-				
-		}
-		function desc(a,b) {
-				return b-a;
-				
-		}
-		console.log(arr.sort(asc));
-		console.log(arr.sort(desc)); 
-        // JavaScript Class
-		
-		// ECMAScript 2015 (ES6)
-		
-		class item{
-			constructor(name,price){
-				this.iname = name;
-				this.iprice = price;
-			}
-			show(){
-				document.write("iname: "+this.iname+" iprice: "+this.iprice+"<br/>")
-			}
-		}
-		
-		let i1 = new item("MI 7", "Rs 20000");
-		i1.show();
-
-        //js hoisting
-        Y= 10; // Assign 10 to y
-        //elem = document.getElementById("demo"); 
-        //elem.innerHTML = Y;  
-        document.write(Y);        
-        var Y; // Declare x
-
-        var linebreak ="<br/>"
-        xx=5;
-        document.write(linebreak,xx,linebreak);
-        var xx;
-        var xxx;
-        xxx=5;
-        document.write(xxx,linebreak);
-        //both work
-        document.write(xxxx,linebreak);
-        var xxxx;
-        xxxx=5;
-        //doesn't work; - undefined
-        //document.write(xxxxx,linebreak);
-        //xxxxx=100;
-        //22-08.html:83 Uncaught ReferenceError: xxxxx is not defined at 22-08.html:83:24
-
-
-        // JavaScript Objects
+    }
+    
+    function handler(event){
+        ev=event;
+        console.log(event.target.innerHTML);
+        event.target.style.color="blue";
+        //event.preventDefault();
+    }
+        </script>
+</head>
+<body onload="init()">
+    <script>
+         // JavaScript Objects
 		
 		// Method 1 : Object Literals
 		let Item = {name:"Reebok", price:"Rs. 2000", av_qty:20};
@@ -520,5 +318,6 @@ document.getElementById("de").innerHTML =
         }
   
       </script>
-	</body>
+    </script>
+</body>
 </html>
