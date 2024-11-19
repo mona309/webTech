@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <hr/>
+    <h1><b><u>1 event1 on any change displays</u></b></h1>
+    <div id="container1"></div>
+    <script type="text/babel">
+    class MyDiv extends React.Component{
+                constructor(props){
+                    super(props);
+                    this.setRef= (el)=> this.myRef=el;
+                    this.showChar=(event)=>{
+                    this.myRef.innerHTML=event.target.value
+                    }
+                }
+                
+                render(){
+                return(
+                    <div>
+                        <input onChange={this.showChar} type="text"/>
+                        <h1 ref={this.setRef}/>
+                    </div>
+                )
+                }
+            }
+            const root1 = ReactDOM.createRoot(document.querySelector("#container1"));
+            root1.render(
+            <div>
+            <MyDiv />
+            </div>
+            );
+            
+    </script>
+
+    <hr/>
+    <h1><b><u>2 event2 only when key pressed displays <br/>
+        so dwddwd c shows dwd c cux 2nd dwd was copied n pasted<br/>
+        enter also gets displayed</u></b></h1>
+    <div id="container2"></div>
+    <script type="text/babel">
+        class MyDiv extends React.Component{
+                    constructor(props){
+                        super(props);
+                        this.setRef= (el)=>{ this.myRef=el};
+                        this.showChar=(event)=>{
+                        this.myRef.innerHTML+=event.key
+                        }
+                    }
+                
+                render(){
+                    return(
+                        <div>
+                            <input onKeyPress={this.showChar} type="text"/>
+                            <h1 ref={this.setRef}/>
+                        </div>
+                    )
+                }
+                }
+                const root2 = ReactDOM.createRoot(document.querySelector("#container2"));
+            root2.render(
+            <div>
+                <MyDiv />
+                </div>
+            );
+    </script>
+
+    <hr/>
+    <h1><b><u>3 event3 same as 2 but not shown in input box also shows in console<br/>
+    shift enter makes enter key red</u></b></h1>
+    <div id="container3"></div>
+    <script type="text/babel">
+        var txt, ev;
+            class MyDiv extends React.Component{
+                constructor(props){
+                    super(props);
+                    this.setRef= (el)=>{ this.myRef=el};
+                    this.showChar=(event)=>{
+                        if(event.shiftKey)
+                            txt="<span style='color:red'>"+event.key+
+                            "</span>"
+                        else
+                            txt=event.key
+                        this.myRef.innerHTML+=txt
+                        console.log(event);
+                        event.persist();
+                        ev=event;
+                        //return=false;
+                        event.preventDefault();
+                        //event.stopPropagation();
+                                
+                    }
+                }
+                render(){
+                return(
+                    <div>
+                        <input onKeyPress={this.showChar} type="text"/>
+                        <h1 ref={this.setRef}/>
+                    </div>
+                )
+                }
+            }
+            const root3 = ReactDOM.createRoot(document.querySelector("#container3"));
+            root3.render(
+            <div>
+                <MyDiv />
+                </div>
+            );
+    </script>
+
+    <hr/>
+    <h1><b><u>4 event4</u></b></h1>
+    <div id="container4"></div>
+    <script type="text/babel">
+    class Counter extends React.Component {
+    render() {
+        var textStyle = {
+        fontSize: 50,
+        fontFamily: "sans-serif",
+        color: "#333",
+        fontWeight: "bold"
+        };
+    
+        return (
+        <div style={textStyle}>
+            {this.props.display}
+        </div>
+        );
+    }
+    }    
+    class CounterParent extends React.Component {
+    constructor(props) {
+        super(props);    
+        this.state = {
+        count: 0
+            };            
+        this.increase = this.increase.bind(this);    
+    }    
+    increase(e) {
+        this.setState({
+        count: this.state.count + 1
+        });
+    }    
+    render() {
+        var backgroundStyle = {
+        padding: 50,
+        backgroundColor: "#FFC53A",
+        width: 100,
+        height: 100,
+        borderRadius: 10,
+        textAlign: "center"
+        };    
+        var buttonStyle = {
+        fontSize: "1em",
+        width: 30,
+        height: 30,
+        fontFamily: "sans-serif",
+        color: "#333",
+        fontWeight: "bold",
+        lineHeight: "3px"
+        };    
+        return (
+        <div style={backgroundStyle}>
+            <Counter display={this.state.count} />
+            <button  onClick={this.increase} style={buttonStyle}>+</button>
+        </div>
+        );
+    }
+    }    
+    const root4 = ReactDOM.createRoot(document.getElementById("container4"));
+        root4.render(
+            <div>
+            <CounterParent />
+            </div>
+        );
+    </script>
+
+    <hr/>
+    <h1><b><u>5 form1 - initial bob when submit logged</u></b></h1>
+    <div id="container5"></div>
+    <script type="text/babel">
+        //when you submit form, state value is printed on console
+    var des=document.querySelector("#container5");
+    class ReadName extends React.Component {
+        constructor(props){
+            super(props);
+            this.state={
+                value:'bob'
+            }
+            this.handleChange=this.handleChange.bind(this);
+            this.handleSubmit=this.handleSubmit.bind(this);
+
+        }
+        handleChange=function(event){
+            this.setState(
+                { value:event.target.value }
+            )
+        }
+        handleSubmit(){
+            console.log("Name entered " +this.state.value);
+            event.preventDefault();
+        }
+
+        render(){
+            return(
+                <div>
+                    <form onSubmit={this.handleSubmit}>
+                        <input value={this.state.value}
+                        onChange={this.handleChange} type="text"/>
+                        <input type="submit" value="submit"/>
+                    </form>
+                </div>
+            )
+        }
+
+    }
+    
+    const root5=ReactDOM.createRoot(des);
+        root5.render(
+            <div>
+                <ReadName/>
+            </div>
+        )
+    </script>
+
+    <hr/>
+    <h1><b><u>6 form2 - same but initial enter name</u></b></h1>
+    <div id="container6"></div>
+    <script type="text/babel">
+        //when you submit form, state value is printed on console
+    var des=document.querySelector("#container6");
+    class ReadName extends React.Component {
+        constructor(props){
+            super(props);
+            this.state={
+                value:'Enter Name'
+            }
+            this.handleChange=this.handleChange.bind(this);
+            this.handleSubmit=this.handleSubmit.bind(this);
+
+        }
+        handleChange=function(event){
+            this.setState(
+                { value:event.target.value }
+            )
+        }
+        handleSubmit(){
+            console.log("Name entered " +this.state.value);
+            event.preventDefault();
+        }
+
+        render(){
+            return(
+                <div>
+                    <form onSubmit={this.handleSubmit}>
+                        <textarea value={this.state.value}
+                        onChange={this.handleChange} type="text"/>
+                        <input type="submit" value="submit"/>
+                    </form>
+                </div>
+            )
+        }
+
+    }
+    
+    const root6=ReactDOM.createRoot(des);
+        root6.render(
+            <div>
+                <ReadName/>
+            </div>
+        )
+    </script>
+
+    <hr/>
+    <h1><b><u>7 form3 - dropdown</u></b></h1>
+    <div id="container7"></div>
+    <script type="text/babel">
+        //when you submit form, state value is printed on console
+    var des=document.querySelector("#container7");
+    class ReadName extends React.Component {
+        constructor(props){
+            super(props);
+            this.state={
+                value:'Orange'
+            }
+            this.handleChange=this.handleChange.bind(this);
+            this.handleSubmit=this.handleSubmit.bind(this);
+
+        }
+        handleChange=function(event){
+            this.setState(
+                { value:event.target.value }
+            )
+        }
+        handleSubmit(){
+            console.log("Name entered " +this.state.value);
+            event.preventDefault();
+        }
+
+        render(){
+            return(
+                <div>
+                    <form onSubmit={this.handleSubmit}>
+                        <label>
+                            Your favorite fruit:
+                        </label>
+                        <select value={this.state.value}
+                        onChange={this.handleChange}>
+                        <option value="mango">Mango </option>
+                        <option value="Orange">Orange </option>
+                        </select>
+                        <input type="submit" value="submit"/>
+                    </form>
+                </div>
+            )
+        }
+
+    }
+    
+    const root7=ReactDOM.createRoot(des);
+        root7.render(
+            <div>
+                <ReadName/>
+            </div>
+        )
+    </script>
+
+    <hr/>
+    <h1><b><u>8 form4 - both logged separately but at same time</u></b></h1>
+    <div id="container8"></div>
+    <script type="text/babel">
+        //when you submit form, state value is printed on console
+    var des=document.querySelector("#container8");
+    class ReadName extends React.Component {
+        constructor(props){
+            super(props);
+            this.state={
+                name:'Bob',
+                age:23
+            }
+            this.handleChange=this.handleChange.bind(this);
+            this.handleSubmit=this.handleSubmit.bind(this);
+
+        }
+        handleChange=function(event){
+            var name=event.target.name 
+            var value=event.target.value 
+            this.setState(
+                {[name]:value }
+            )
+        }
+        handleSubmit(){
+            console.log("Name entered " +this.state.name);
+            console.log("Age entered " +this.state.age);
+            event.preventDefault();
+        }
+
+        render(){
+            return(
+                <div>
+                    <form onSubmit={this.handleSubmit}>
+                        <label>
+                            Name
+                        </label>
+                        <input name="name" value={this.state.name}
+                        onChange={this.handleChange} type="text"/>
+                        <label>
+                            Age:
+                        </label>
+                        <input name="age" value={this.state.age}
+                        onChange={this.handleChange} type="text"/>
+
+                        
+                        <input type="submit" value="submit"/>
+                    </form>
+                </div>
+            )
+        }
+
+    }
+    
+    const root8=ReactDOM.createRoot(des);
+        root8.render(
+            <div>
+                <ReadName/>
+            </div>
+        )
+    </script>
+
+    <hr/>
+    <h1><b><u>9 hook1 - useState to increment</u></b></h1>
+    <div id="container9"></div>
+    <script type="text/babel">
+        // Your React component code
+    function Countera() {
+        const [count, setCount] = React.useState(0);
+
+        const increment = () => {
+            setCount(count + 1);
+        };
+
+        return (
+            <div>
+            <p>Count: {count}</p>
+            <button onClick={increment}>Increment</button>
+            </div>
+        );
+        }
+
+        // Render your React component
+        const root9 = ReactDOM.createRoot(document.querySelector("#container9"));
+        root9.render(
+        <div>
+        <Countera />
+        </div>
+        );
+    
+        </script>
+
+    <hr/>
+    <h1><b><u>10 hook2 - useEffect to count</u></b></h1>
+    <div id="container10"></div>
+    <script type="text/babel">
+        function Timer() {
+            const [count, setCount] = React.useState(0);
+    
+            React.useEffect(() => {
+                setTimeout(() => {
+                setCount((count) => count + 1);
+                }, 1000);
+            });
+    
+            return <h1>I have rendered {count} times!</h1>;
+            }
+        const root10 = ReactDOM.createRoot(document.querySelector("#container10"));
+        root10.render(
+        <div>
+            <Timer />
+            </div>
+        );
+        </script>
+
+    <hr/>
+    <h1><b><u>11 keys - use key props</u></b></h1>
+    <h3><u>without map</u></h3>
+    <div id="container1a"></div>
+    <h3><u>map over array of numbers</u></h3>
+    <div id="container2a"></div>
+    <h3><u>map over array of strings</u></h3>
+    <div id="container3a"></div>
+    <script type="text/babel">
+        // Function with keys without map
+        function Stuff() {
+            return (
+                [
+                    <p key="1">Batman1</p>,
+                    <p key="2">IronMan1</p>,
+                    <p key="3">SpiderMan1</p>
+                ]
+            );
+        }
+        const root1a = ReactDOM.createRoot(document.getElementById('container1a'));
+        root1a.render(
+            <Stuff />
+        );
+        function NumberList(props) {
+            const numbers = props.numbers;
+            const listItems = numbers.map((num) =>
+                <li key={num.toString()}>{num * 2}</li>
+            );
+            return (
+                <ul>{listItems}</ul>
+            );
+        }
+
+        const numbers = [1, 2, 3, 4, 5];
+        const root2a = ReactDOM.createRoot(document.getElementById('container2a'));
+        root2a.render(
+            <NumberList numbers={numbers} />
+        );
+        // Function with map - Example 2
+        function NameList(props) {
+            const names = props.names;
+            const listItems = names.map((name, index) =>
+                <li key={index}>{name}</li>
+            );
+            return (
+                <ul>{listItems}</ul>
+            );
+        }
+
+        const names = ["Batman1", "Ironman1", "Spiderman1"];
+        const root3a = ReactDOM.createRoot(document.getElementById('container3a'));
+        root3a.render(
+            <NameList names={names} />
+        );
+    </script>
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style></style>
+</head>
+<body>
+    <hr/>
+    <h1><b><u>Complex Component Example</u></b></h1><br/>
+    <div id="container1"></div>
+    <script type="text/babel">
+        class ResImage extends React.Component {
+        render() {
+            return (
+            <div>
+                <img src={this.props.src} alt="Result" />
+            </div>
+            );
+        }
+    }
+
+        class ResLink extends React.Component {
+        render() {
+            return (
+            <div>
+                <a href={this.props.link}>{this.props.linktext}</a>
+            </div>
+            );
+        }
+        }
+
+        class ResCaption extends React.Component {
+        render() {
+            return (
+            <div>
+                <p>{this.props.caption}</p>
+            </div>
+            );
+        }
+        }
+
+        class SrchResult extends React.Component {
+        render() {
+            return (
+            <div>
+                <ResImage {...this.props} />
+                <ResCaption {...this.props} />
+                <ResLink {...this.props} />
+            </div>
+            );
+        }
+        }
+
+        const container = document.getElementById('container1');
+        const root = ReactDOM.createRoot(container);
+
+        root.render(
+        <div>
+            <SrchResult
+            src="images/tiger.jpg"
+            link="https://www.britannica.com/animal/tiger"
+            linktext="britannica.com"
+            caption="tiger | Facts, Information and Habitat…"
+            />
+
+            <SrchResult
+            src="images/peacock.jpg"
+            link="https://www.britannica.com/animal/peacock"
+            linktext="britannica.com"
+            caption="peacock | Facts and Habitat | Britannica"
+            />
+        </div>
+        );
+    </script>
+
+    <hr/>
+    <h1><b><u>Digital Clock Component</u></b></h1><br/>
+    <div id="container2"></div>
+    <script type="text/babel">
+    class Clock extends React.Component {
+        constructor(props) {
+        super(props);
+        this.state = {
+            date: new Date(),
+        };
+        }
+
+        componentDidMount() {
+        this.timerID = setInterval(() => this.tick(), 1000);
+        }
+
+        componentWillUnmount() {
+        clearInterval(this.timerID);
+        }
+
+        tick() {
+        this.setState({
+            date: new Date(),
+        });
+        }
+
+        render() {
+        return (
+            <div>
+            <h1>Time as on Today</h1>
+            <h2>It is {this.state.date.toLocaleTimeString()}</h2>
+            </div>
+        );
+        }
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("container2"));
+    root.render(
+        <div>
+        <Clock />
+        </div>
+    );
+    </script>
+
+    <hr/>
+    <h1><b><u>Template(Count Up and Down)Component</u></b></h1><br/>
+    <div id="container3"></div>
+    <div id="container4"></div>
+    <script type="text/babel">
+      // Incrementing Counter Component
+    class CounterUp extends React.Component {
+        constructor(props) {
+        super(props);
+        this.state = {
+            seconds: 0,
+        };
+        }
+
+    componentDidMount(){
+        this.interval = setInterval(() => {
+            this.setState((prevState) => {
+                if (prevState.seconds < 9) {
+                    return { seconds: prevState.seconds + 1 };
+                } else {
+                    clearInterval(this.interval); // Stop counting at 10
+                    return null; // Return null if no state change is needed
+                }
+            });
+        }, 1000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+
+    render() {
+        return <h1>{this.state.seconds}</h1>;
+    }
+}
+
+
+    class CounterUpDisplay extends React.Component {
+        render() {
+        return (
+            <div>
+            <CounterUp />
+            <h2>seconds since the page loaded</h2>
+            </div>
+        );
+        }
+    }
+
+    // Decrementing Counter Component
+    class CounterDown extends React.Component {
+        constructor(props) {
+        super(props);
+        this.state = {
+            seconds: props.start,
+        };
+        }
+
+        componentDidMount() {
+        this.t = setInterval(this.timer.bind(this), 1000);
+        }
+
+        componentWillUnmount() {
+        clearInterval(this.t);
+        }
+
+        timer() {
+        if (this.state.seconds === 0) {
+            clearInterval(this.t);
+        } else {
+            this.setState((prevState) => ({
+            seconds: prevState.seconds - 1,
+            }));
+        }
+        }
+
+        render() {
+        return <h1>{this.state.seconds}</h1>;
+        }
+    }
+
+    class CounterDownDisplay extends React.Component {
+        render() {
+        return (
+            <div>
+            <CounterDown start={this.props.start} />
+            <h2>seconds before the page freezes... {this.props.start} sec countdown</h2>
+            </div>
+        );
+        }
+    }
+
+    // Render each component to its respective container
+    const root3 = ReactDOM.createRoot(document.querySelector("#container3"));
+    root3.render(<CounterUpDisplay />);
+
+    const root4 = ReactDOM.createRoot(document.querySelector("#container4"));
+    root4.render(
+        <div>
+        <CounterDownDisplay start={5} />
+        <CounterDownDisplay start={9} />
+        </div>
+    );
+    </script>
+
+    <hr/>
+    <h1><b><u>Component Lifecycle</u></b></h1><br/>
+    <div id="container5"></div>
+    <script type="text/babel">
+        // Helper function to log messages to container5
+        function logMessage(message) {
+            const logContainer = document.querySelector("#container5");
+            const newLine = document.createElement("p");
+            newLine.textContent = message;
+            logContainer.appendChild(newLine);
+        }
+
+        var des = document.querySelector("#container5");
+
+        class Counterd extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    seconds: props.start
+                };
+                this.timer = this.timer.bind(this);
+                logMessage("constructor");
+            }
+
+            componentDidMount() {
+                this.t = setInterval(this.timer, 1000);
+                logMessage("Component is mounted on the DOM");
+            }
+
+            timer() {
+                this.setState((prev) => {
+                    return { seconds: prev.seconds - 1 }
+                });
+            }
+                /* timer=()=>{
+                    this.setState(
+                        {seconds:this.state.seconds+1}
+                    )
+                }*/
+                /* timer=()=>{
+                    this.setState(()=>{
+                    return {
+                        seconds:this.state.seconds+1 }
+                    
+                    })
+                }*/
+                componentDidUpdate(prevprops, prevstate) {
+                console.log("component updated from " + prevstate.seconds);
+                if (this.state.seconds === 0) {
+                    logMessage("Timer reached 0");
+                    setTimeout(() => {
+                        root5.unmount();
+                        logMessage("Component Unmounted");
+                    }, 0); // Delays unmounting until the current render is complete
+                }
+            }
+
+
+            componentWillUnmount() {
+                logMessage("Component is about to be unmounted");
+                clearInterval(this.t);
+            }
+            render() {
+                return (
+                    <h1>{this.state.seconds}</h1>
+                );
+            }
+        }
+
+        class CounterDisplay1 extends React.Component {
+
+            render() {
+                return (
+                    <div>
+                        <Counterd start={this.props.start} />
+                        <h2>Seconds since the page loaded</h2>
+                    </div>
+                );
+            }
+        }
+
+        const root5 = ReactDOM.createRoot(des);
+        root5.render(
+            <div>
+                <CounterDisplay1 start={10} />
+
+                <CounterDisplay1 start={12} />
+            </div>
+        );
+    </script>
+</body>
+</html>

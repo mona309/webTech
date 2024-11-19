@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <hr>
+    <h1><b><u>1</u></b></h1>
+    <div id="container1"></div>
+    <script type="text/babel">
+        function Stuff(props) {
+        return <p>Hello {props.name}</p>;
+        }
+        const root1 = ReactDOM.createRoot(document.querySelector("#container1"));
+        root1.render(<Stuff name="Batman" />);
+    </script>
+
+    <hr>
+    <h1><b><u>2</u></b></h1>
+    <div id="container2"></div>
+    <script type="text/babel">
+    function Helloworld(props) {
+        //not styles but style
+        return (
+        <div className={props.type} style={styles[props.type]}> 
+            <h1>{props.children}</h1>
+        </div>
+        );
+    }
+    const styles = {
+    greeting:{color:'blue'},
+    shocking:{color:'red'},
+    };
+    const root2 = ReactDOM.createRoot(document.querySelector("#container2"));
+    root2.render(
+        <div>
+        <Helloworld type="greeting">Hello Batman</Helloworld>
+        <Helloworld type="shocking">Ironman, Where is Thor?</Helloworld>
+        </div>
+    );
+    </script>
+
+    <hr>
+    <h1><b><u>3 refs1 one time predefined change</u></b></h1>
+    <div id="container3"></div>
+    <script type="text/babel">
+        class CustomText extends React.Component {
+        constructor(props) {
+            super(props);
+            this.myTextRef = React.createRef();
+        }
+        changeText = (event) => {
+            console.log(event.target.value + " clicked");
+            this.myTextRef.current.innerHTML = "changed";
+        };
+        render() {
+            return (
+            <div>
+                <h1 ref={this.myTextRef}>This is the Text</h1>
+                <input
+                type="button"
+                value="Change the Text"
+                onClick={this.changeText}
+                />
+            </div>
+            );
+        }
+        }
+        const root3 = ReactDOM.createRoot(document.querySelector("#container3"));
+        root3.render(<CustomText />);
+    </script>
+
+    <hr>
+    <h1><b><u>4 refs2 randomized continuous changing</u></b></h1>
+    <div id="container4"></div>
+    <script type="text/babel">
+        const colors = ["red", "green", "blue", "yellow", "orange"];
+        class CustomText extends React.Component {
+        constructor(props) {
+            super(props);
+            this.myTextRef = React.createRef();
+        }
+        changeText = (event) => {
+            console.log(event.target.value + " clicked");
+            const i = Math.floor(Math.random() * colors.length);
+            console.log(i);
+            this.myTextRef.current.innerHTML = colors[i];
+            this.myTextRef.current.style.color = colors[i];
+        };
+        render() {
+            return (
+            <div>
+                <h1 ref={this.myTextRef}>This is the Text</h1>
+                <input
+                type="button"
+                value="Change the Text"
+                onClick={this.changeText}
+                />
+            </div>
+            );
+        }
+        }
+        const root4 = ReactDOM.createRoot(document.querySelector("#container4"));
+        root4.render(<CustomText />);
+    </script>
+
+    <hr>
+    <h1><b><u>5 creating ref</u></b></h1>
+    <div id="container5"></div>
+    <script type="text/babel">
+        class CustomTextInput extends React.Component {
+        constructor(props) {
+            super(props);
+            // Create a ref to store the text input DOM element
+            this.textInput = React.createRef();
+        }
+        focusTextInput = () => {
+            // Explicitly focus the text input using the raw DOM API
+            this.textInput.current.focus();
+        };
+        render() {
+            return (
+            <div>
+                <input type="text" ref={this.textInput} />
+                <input
+                type="button"
+                value="Focus the text input"
+                onClick={this.focusTextInput}
+                />
+            </div>
+            );
+        }
+        }
+        const root5 = ReactDOM.createRoot(document.querySelector("#container5"));
+        root5.render(<CustomTextInput />);
+    </script>
+
+    <hr>
+    <h1><b><u>6 passing ref</u></b></h1>
+    <div id="container6"></div>
+    <script type="text/babel">
+        function CustomInput(props) {
+        return (
+            <div>
+            <input ref={props.inputRef} type="text" />
+            </div>
+        );
+        }
+        class Parent extends React.Component {
+        constructor() {
+            super();
+            this.inputText = React.createRef(); // Using ref to store input
+        }
+        doClick = () => {
+            this.inputText.current.focus(); // Focus the input
+            console.log(this.inputText.current.value); // Log the input value
+        };
+        render() {
+            return (
+            <div>
+                <CustomInput inputRef={this.inputText} />
+                <button onClick={this.doClick}>Click</button>
+            </div>
+            );
+        }
+        }
+        const root6 = ReactDOM.createRoot(document.querySelector("#container6"));
+        root6.render(<Parent />);
+    </script>
+</body>
+</html>
